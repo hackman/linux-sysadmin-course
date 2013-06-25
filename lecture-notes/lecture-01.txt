@@ -94,6 +94,11 @@ Considerations for the size of the partitions
 5. Linux I/O queues are per device, not per partition. Which means that more partitions on the same device is worse then partitions on separate physical devices.
 6. If you are using HW RAID controllers, some times it is better to export two separate devices from your array instead of one(because of the above rule).
 
+Directory structure considerations
+1. /home usualy grows a lot because of all the user content
+2. /usr also grwows, usualy because of a lot of new software
+3. /var grows because of logs, databases or e-mails going trough the SMTP server
+
 What kind of pseudo file systems we have:
 - ProcFS
  + /proc/cpuinfo
@@ -140,4 +145,39 @@ Commands that we need to look at:
  + 1 - free pagecache
  + 2 - free directory entries and inodes
  + 3 - free pagecache, directory entries and inodes
+- fsck.*
+ + /lost+found
+ + e2fsck
 
+Cluster/Network file systems
+ - NFS (mount & export)
+ - CIFS (smbmound/mount -t cifs)
+
+Commands setup:
+ 1. create devices with mknod
+ 2. create/edit/delete partitions with cfdisk
+ 3. create/edit/delete partitions with fdsisk
+ 4. create/edit/delete partitions with sfdisk
+ 5. create/edit/delete partitions with parted
+ 6. create swap fs on a partition
+ 7. create swap fs on a file
+ 8. activate, deactivate and monitor swaps
+ 9. create an ext3 fs on a partition
+10. create an ext2 fs on a file
+11. create reiserfs fs on a partition
+12. create vfat fs on a partition
+13. make a backup of your MBR using dd
+14. convert ext2fs to ext3 with tune2fs
+15. create, modify and delete sw raid with mdadm
+16. create, modify and delete LVM partitions
+17. mount the created partitions
+18. describe the definitions of /etc/fstab and mtab
+19. show mount --bind/--rbind 
+20. describe the following mount options:
+ + noatime/nodiratime
+ + auto/noauto
+ + owner
+ + nosuid
+ + nodev
+ + noexec
+ + remount
