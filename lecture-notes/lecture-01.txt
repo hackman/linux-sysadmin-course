@@ -1,0 +1,123 @@
+The Three Giants of Linux - http://www.linux-mag.com/id/7721/
+The Linux Distribution Diagram - http://futurist.se/gldt/
+List of supported architectures - http://en.wikipedia.org/wiki/Linux_kernel_portability_and_supported_architectures
+History of Linux - http://en.wikipedia.org/wiki/History_of_Linux
+Linux kernel internals structure - http://www.makelinux.net/system/new
+
+
+How to find help in Linux
+
+1. -h / --help
+2. man command/filename
+3. info command/filename
+4. If man and/or info are not available on your machine, you can always google for the command or serarch for manual pages here: http://linux.die.net/
+5. The Linux Documentation Project - http://www.tldp.org
+6. HowToForge - http://www.howtoforge.com
+
+HardDisk names
+
+/dev/
+ hda1
+ | |\--- 1-x - partition numbers
+ | |---- a - primary master
+ | |---- b - primary slave
+ | |---- c - secondary master
+ | \---- d - secondart slave
+ \------ hd - IDE hard disk or CDROM
+
+ sda1
+ | |\--- 1-x - partition numbers
+ | \---- a-z - device name
+ \------ sd - SCSI/SATA/SAS/USB hard disk
+
+ mmcblk0p1
+   |   | \--- 1-x - partition numbers
+   |   \----- 0-x - device sequence number 
+   \--------- device name (only SD/MMC compatible cards)
+
+ Memory sticks are usually read via USB card readers which expose them as USB hard disks
+
+
+Partitioning
+*** Everything is custom ***
+!!! Always keep /boot on a separate partition and make it between 150-500 MB !!!
+
+Swap considerations:
+1. If you have less then 2GB of RAM, create the swap partition at least as big as the amount of RAM.
+2. If you have less then 1GB of RAM, create thw swap to be double the amount of RAM.
+3. If you have above 4GB of RAM and you are not going to use Hibarnate either remove the swap completely or don't make it bigger then 1GB.
+4. If you are going to use Hibernate, then you need the swap partition to be as big as your ram is + 10-20 MB, no matter how much RAM you have.
+5. Swap can be dispersed across multiple devices in order to increase its performance. If two or more swap partitions have the same priority(for example, pri=0), then the kernel writes to them on round-robin basis.
+
+General partition scheme:
+0 - for swap  - take a look at Swap considerations
+1 - for /boot - 150-500 MB
+2 - for /     - the rest of the space
+
+Two possible schemas for resize have to be considered:
+1. Leave the biggest partition at the end,
+2. Leave the biggest partition at the begining.
+
+Never put the biggest partition between the others. If you resize it later, you will need to move some partitions to be able to utulize the freed space.
+
+Should you use Linux Software RAID ?
+Should you use LVM ?
+
+Considerations for Linux Software RAID
+1. Redunrancy
+2. Portability
+3. Strange performance setups (/dev/ram0 /dev/sdb1 where sdb1 is setup as --write-mostly)
+4. You have to think cearfuly before creating the md devices in order to prevent block unallignment issues(which cause performance issues).
+
+Considerations for LVM
+1. You can resize, delete, create partitions without meny issues.
+2. You can easily expand your volume groups by adding new drives.
+3. It becomes harder to recover broken data
+4. You have to think cearfuly before creating the volume groups and logical volumes in order to prevent block unallignment issues(which cause performance issues).
+5. LVM is the only good backup solution for MySQL/PgSQL servers. Everything else is cluster/replication based or needs service interruption.
+
+Do not put Linux Software RAID on top of LVM and the other way around. This causes performance issues.
+
+Unfortunately I can't tell you which mirroring code is faster. I personally prefer the SW RAID1, but it is possible that the LVM code is faster. I don't know.
+
+Considerations for primary/logical partitions
+1. Primary partitions are only 4, so you can not scale, with more partitions.
+2. Some operating systems can not boot from logical partitions.
+3. The logical partitions can be teoretically infinite.
+
+Considerations for the size of the partitions
+1. Bigger partitions take longer time to backup and restore.
+2. If you are planning to have HUGE amount of files, but they are small, then you can sacrifice some space to allocate more inodes(tweeking the inode options of the selected FS).
+3. If the partitions are small, they can not contain many files. Also, bigger separation of the data can slow down your hard drive. And finally at some point you may need to expand them or combine them with other partitions.
+4. Very big partitions over 16TB limit you to only a few types of File Systems. 
+5. Linux I/O queues are per device, not per partition. Which means that more partitions on the same device is worse then partitions on separate physical devices.
+6. If you are using HW RAID controllers, some times it is better to export two separate devices from your array instead of one(because of the above rule).
+
+Files that we need to look at:
+- /proc/partitions
+- /proc/mounts
+- /proc/filesystems
+- /etc/fstab
+- /etc/mstab
+
+Commands that we need to look at:
+- mknod
+- fdisk
+- cfdisk
+- sfdisk
+- parted
+- mkswap
+- swapon/swapoff
+- mkfs.ext2/3/4
+- mkfs.reiserfs
+- mkfs.vfat
+- tune2fs
+- dd
+- mount
+- sync
+- echo 0/1/2/3 > /proc/sys/vm/drop_caches (Documentation/sysctl/vm.txt) 
+ + 0 - do nothing
+ + 1 - free pagecache
+ + 2 - free directory entries and inodes
+ + 3 - free pagecache, directory entries and inodes
+
