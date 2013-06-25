@@ -1,0 +1,21 @@
+/dev/sda2				/                       ext4    defaults,noatime,nodiratime             0 0
+/dev/sda1				/boot                   ext2    defaults,noatime,nodiratime             0 0
+proc					/proc                   proc    defaults                				0 0
+/proc					/fedora/proc			none    rw,bind,auto    						0 0
+tmpfs					/dev/shm                tmpfs   defaults                				0 0
+/sys					/fedora/sys             none    rw,bind,auto							0 0
+/dev					/fedora/dev             none    rw,rbind,auto							0 0
+/tmp					/fedora/tmp             none    rw,bind,auto							0 0
+/var/run				/fedora/run             none    rw,bind,auto							0 0
+/home/hackman			/fedora/home/hackman    none    rw,bind,auto							0 0
+/dev/sdb6				/sda                    ext4    defaults,noatime,nodiratime				0 0
+/sda/storage			/storage                none    rw,bind,auto							0 0
+/sda/storage			/fedora/storage			none    rw,bind,auto							0 0
+#/dev/cdrom				/mnt/cdrom              auto	noauto,owner,ro,comment=x-gvfs-show     0 0
+#devpts					/dev/pts                devpts  gid=5,mode=620							0 0
+#/var/spool/swapfile	none                    swap    defaults								0 0
+#10.2.0.13:/home		/home					nfs     _netdev,auto,noatime,nodiratime,nolock  0 0
+//10.2.0.11/share		/storage/beast          cifs 	user=hackman,password=123789,uid=1000,gid=1000,noauto 0 0
+//10.2.0.11/raid		/storage/beast-raid     cifs 	user=hackman,password=123789,uid=1000,gid=1000,noauto 0 0
+
+
