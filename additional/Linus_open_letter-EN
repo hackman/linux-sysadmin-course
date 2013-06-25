@@ -14,3 +14,5 @@ in minix, as my OS resembles it somewhat (same physical layout of the file-syste
 other things)."
 
 Indeed, Linux 1.0 was released on March 13th, 1994 supporting only the 32-bit i386 architecture. However, by the release of Linux 1.2 on March 7th, 1995 it had already been ported to 32-bit MIPS, 32-bit SPARC, and the 64-bit Alpha. By the release of Linux 2.0 on June 9th, 1996 support had also been added for the 32-bit m68k and 32-bit PowerPC architectures. And jumping forward to the Linux 2.6 kernel, first released in 2004, it has been and continues to be ported to numerous additional architectures.
+
+The whole text can be found here: http://www.cs.cmu.edu/~awb/linux.history.html
