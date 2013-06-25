@@ -1,0 +1,14 @@
+ 1. Find hardware devices which can export regular RAM as HDD. Please provide details, how these devices work and how they can be accesed from Linux.
+ 2. Find a hardware device that can store more then 6 HDDs and can be directly attached to controller on a machine.
+ 3. Write down the commands needed to create encrypted partition.
+ 4. Write down the commands needed to create encrypted directory.
+ 5. Write down the commands needed to create SW RAID10 with 4 SATA drives.
+ 6. Write down the commands needed to create SW RAID01 with 4 SATA drives.
+ 7. Write down the commands needed to create SW RAID60 with 10 SATA drives.
+ 8. Write down the commands needed to create SW RAID6 with 5 SATA drives.
+ 9. Find a tool that can be used to monitor and configure LSI RAID controller. Give one example command for monitoring and one for configuration.
+10. Find a tool that can be used to monitor and configure 3were RAID controller. Give one example command for monitoring and one for configuration.
+11. Find a tool that can be used to monitor and configure Adaptec RAID controller. Give one example command for monitoring and one for configuration.
+12. Find a tool that can be used to monitor and configure DELL(PERC) RAID controller. Give one example command for monitoring and one for configuration.
+13. Write down the commands needed to create a snapshot of a drive. Also explain the disk usage requirements for the the snapshot.
+
