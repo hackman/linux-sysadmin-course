@@ -12,7 +12,8 @@ How to find help in Linux
 3. info command/filename
 4. If man and/or info are not available on your machine, you can always google for the command or serarch for manual pages here: http://linux.die.net/
 5. The Linux Documentation Project - http://www.tldp.org
-6. HowToForge - http://www.howtoforge.com
+6. The Linux Kernel Documentation directory - Documentation/*
+7. HowToForge - http://www.howtoforge.com
 
 HardDisk names
 
@@ -92,6 +93,25 @@ Considerations for the size of the partitions
 4. Very big partitions over 16TB limit you to only a few types of File Systems. 
 5. Linux I/O queues are per device, not per partition. Which means that more partitions on the same device is worse then partitions on separate physical devices.
 6. If you are using HW RAID controllers, some times it is better to export two separate devices from your array instead of one(because of the above rule).
+
+What kind of pseudo file systems we have:
+- ProcFS
+ + /proc/cpuinfo
+ + /proc/meminfo
+ + /proc/partitions
+ + /proc/filesystems
+ + /proc/schedstat
+ + /proc/diskstats
+ + /proc/loadavg
+ + /proc/uptime
+- SysFS
+ + /sys/class/thermal/thermal_zone0/temp 
+ + /sys/power/disk
+ + /sys/bus/cpu/devices/cpu0/cpufreq/cpuinfo_cur_freq
+- TmpFS
+ + block distribution
+
+File systems can be created on a pratition or on a file.
 
 Files that we need to look at:
 - /proc/partitions
