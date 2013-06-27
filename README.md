@@ -9,12 +9,12 @@ It also includes home works.
 
 
 Grades:
-Exam - 60% 
-Homeworks - 15%
-Peer review - 15%
-Attendance - 10%
+* Exam - 60% 
+* Homeworks - 15%
+* Peer review - 15%
+* Attendance - 10%
 
-Bonuses - max 20%
+* Bonuses - max 20%
 
-Bonuses are gaint from the forums and extraordanary good homeworks.
+Bonuses are gained from the forums and extraordanary good homeworks.
   
