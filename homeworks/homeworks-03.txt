@@ -1,0 +1,7 @@
+1. Describe the MAC security model.
+2. Describe the RBAC security model.
+3. Describe the SMACK security model.
+4. Describe the SELinux security model.
+5. Describe the contents of the following files from the /proc file system: swaps, stat, schedstat.
+6. Describe the contents of the following files from the /proc file system: modules, filesystems, diskstats, mounts.
+7. List all opend files using only the /proc fs.
