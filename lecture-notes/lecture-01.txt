@@ -10,10 +10,11 @@ How to find help in Linux
 1. -h / --help
 2. man command/filename
 3. info command/filename
-4. If man and/or info are not available on your machine, you can always google for the command or serarch for manual pages here: http://linux.die.net/
-5. The Linux Documentation Project - http://www.tldp.org
-6. The Linux Kernel Documentation directory - Documentation/*
-7. HowToForge - http://www.howtoforge.com
+4. /usr/doc
+5. If man and/or info are not available on your machine, you can always google for the command or serarch for manual pages here: http://linux.die.net/
+6. The Linux Documentation Project - http://www.tldp.org
+7. The Linux Kernel Documentation directory - Documentation/* (http://www.kernel.org)
+8. HowToForge - http://www.howtoforge.com
 
 HardDisk names
 
@@ -181,3 +182,5 @@ Commands setup:
  + nodev
  + noexec
  + remount
+ + nofail
+21. mounting a file using loop
