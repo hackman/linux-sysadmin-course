@@ -8,3 +8,4 @@
  8. Create a job definition file for Apache web server for UpStart.
  9. Create a job definition file for serial console with UpStart.
 10. Configure GRUB to load a kernel and its initrd from the Network.
+11. Find the major and minor number of /dev/mptctl and describe what this device is for.
