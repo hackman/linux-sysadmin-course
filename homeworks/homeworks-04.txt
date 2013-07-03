@@ -1,0 +1,13 @@
+1. Configure your command prompt in such a way, that you will always see the exit status of the previous command. 
+2. Configure your command prompt in such a way, that you will see the exact hour, minute and second of the execution of the previous command.
+3. Create a shell script that will tell you all the files that are currently opened on the machine and it will give the output in the following format:
+  command0 || file0
+  command0 || file1
+  command0 || file2
+  command1 || file0
+4. Write a bash script that will convert a directory containing .wav files into .mp3. Hint: use lame or menconder for the encoding.
+5. Write a bash script that will resize all .jpg images in one directory to width of 1024px and proportional height. Hint: user convert(from the ImageMagick package).
+6. Write a bash script which will rotate logs. The idea is simple, in one directory you have a few logs - access.log, error.log and system.log, you need to create a script that on each of its runs will rename each of the logs to LOG.1 and then gzip the file(LOG is the name of the log that is beeing renamed). If there is already LOG.1.gz then the file should be renamed to LOG.2.gz and so on. You need to keep max of 12 copies of the logs.
+7. Write a bash script that will output only the unique numbers in a file that is with the following format:
+  word | number
+Be aware that the numbers in the file may or may not be ordered.
