@@ -41,4 +41,5 @@ Disk Filures - Carnegie Mellon University
 An Analysis of Data Corruption in the Storage Stack
 	http://training.iseca.org/mod/resource/view.php?id=213
 
-
+Resizing ext3 fs:
+	http://www.howtoforge.com/linux_resizing_ext3_partitions
