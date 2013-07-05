@@ -1,0 +1,44 @@
+* Disk sector:		http://en.wikipedia.org/wiki/Disk_sector
+* Disk seek:		http://en.wikipedia.org/wiki/Disk_seek
+* Block:			http://en.wikipedia.org/wiki/Block_(data_storage)
+
+* Parallel ATA:		http://en.wikipedia.org/wiki/Parallel_ATA
+* Serial ATA:		http://en.wikipedia.org/wiki/Serial_ATA
+* SCSI:				http://en.wikipedia.org/wiki/SCSI
+* SAS:				http://en.wikipedia.org/wiki/Serial_attached_SCSI
+
+* How the hard disks work:	http://www.youtube.com/watch?v=9eMWG3fwiEU
+* 72MB 4 platter disk:		http://www.youtube.com/watch?v=Y9Z8vF46fXo
+* Damaged disk:				http://www.youtube.com/watch?v=5HwBJl9wGSo
+
+Partitioning: http://en.wikipedia.org/wiki/Disk_partitioning
+
+Extended boot record: http://en.wikipedia.org/wiki/Extended_Boot_Record
+
+Master Boot Record: http://en.wikipedia.org/wiki/Master_Boot_Record
+* Volume Boot Record: http://en.wikipedia.org/wiki/Volume_Boot_Record
+
+GUID(Globally Unique Identifier) Partition Table: http://en.wikipedia.org/wiki/GUID_Partition_Table
+
+* UEFI: http://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface
+
+Internal fragmentation:		http://en.wikipedia.org/wiki/Internal_fragmentation
+
+RAID: http://en.wikipedia.org/wiki/RAID
+	http://www.howtoforge.com/redundant-array-of-inexpensive-disks-raid-technical-paper
+
+LVM: http://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)
+	http://www.howtoforge.com/linux_lvm
+
+SW RAID Stripe vs. LVM Stripe
+	http://www.linux-mag.com/id/7582/
+
+# You need FREE registration to the Moodle to download these papers:
+Disk Filures - Google paper 
+	http://training.iseca.org/mod/resource/view.php?id=197
+Disk Filures - Carnegie Mellon University
+	http://training.iseca.org/mod/resource/view.php?id=198
+An Analysis of Data Corruption in the Storage Stack
+	http://training.iseca.org/mod/resource/view.php?id=213
+
+
