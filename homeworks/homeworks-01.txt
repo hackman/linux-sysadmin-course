@@ -11,7 +11,7 @@
 11. Find a tool that can be used to monitor and configure 3were RAID controller. Give one example command for monitoring and one for configuration.
 12. Find a tool that can be used to monitor and configure Adaptec RAID controller. Give one example command for monitoring and one for configuration.
 13. Find a tool that can be used to monitor and configure DELL(PERC) RAID controller. Give one example command for monitoring and one for configuration.
-14. Write down the commands needed to create a snapshot of a drive. Also explain the disk usage requirements for the the snapshot.
+14. Write down the commands needed to create an LVM snapshot of a drive. Also explain the disk usage requirements for the the snapshot.
 15. Describe the difference between the hash functions (tea, yura or r5) used in ReiserFS.
 16. Write a protofile for use with mkfs.xfs to create a file system on 20 GB partition.
 17. Find all possible command line tools related to XFS administration (at least 5).
