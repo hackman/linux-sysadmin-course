@@ -183,4 +183,5 @@ Commands setup:
  + noexec
  + remount
  + nofail
+ + usrquota/grpquota
 21. mounting a file using loop
