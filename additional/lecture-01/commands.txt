@@ -9,6 +9,7 @@ fsck,ext2
 fsck,ext3
 fsck,reiserfs
 fsck,xfs
+e2fsck - ext2/3/4 dedicated filesystem cache.
 
 Създаване на файлова система:
 mkfs.ext2
@@ -18,6 +19,7 @@ mkfs.xfs
 Resize filesystem:
 resize_reiserfs
 resize2fs
+
 
 !!! XFS под Linux може само да се увеличава но неможе да се намаля. !!!
 
@@ -53,3 +55,9 @@ Disk information:
 hdparm - използва се за информация/настройка/спиране/пускане на IDE/SCSI дискове
 sdparm - използва се за информация/настройка/спиране/пускане на SATA/SAS дискове
 smartctl - използва се за информация/настройка/спиране/пускане на всички видове дискове, като може да си говори и с контролерите на които са свързани дисковете
+
+
+mount - команда за монтиране на диск в директория
+  -o remount,rw
+  -t tmpfs
+  --bind & --rbind
