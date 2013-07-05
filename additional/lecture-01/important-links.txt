@@ -43,3 +43,6 @@ An Analysis of Data Corruption in the Storage Stack
 
 Resizing ext3 fs:
 	http://www.howtoforge.com/linux_resizing_ext3_partitions
+
+Detailed Ext2 structure:
+	http://www.nongnu.org/ext2-doc/ext2.html
