@@ -1,0 +1,111 @@
+Total 97 supported partition types
+
+The most important ones:
+05 Extended
+82 Linux swap / Solaris
+83 Linux
+85 Linux extended
+88 Linux plaintext
+8E Linux LVM
+EE GPT
+FD Linux raid autodetec
+
+
+Type | Desctiption
+01 FAT12
+02 XENIX root
+03 XENIX usr
+04 FAT16 <32M
+05 Extended
+06 FAT16
+07 HPFS/NTFS/exFAT
+08 AIX
+09 AIX bootable
+0A OS/2 Boot Manager
+0B W95 FAT32
+0C W95 FAT32 (LBA)
+0E W95 FAT16 (LBA)
+0F W95 Ext'd (LBA)
+10 OPUS
+11 Hidden FAT12
+12 Compaq diagnostics
+14 Hidden FAT16 <32M
+16 Hidden FAT16
+17 Hidden HPFS/NTFS
+18 AST SmartSleep
+1B Hidden W95 FAT32
+1C Hidden W95 FAT32 (LBA)
+1E Hidden W95 FAT16 (LBA)
+24 NEC DOS
+27 Hidden NTFS WinRE
+39 Plan 9
+3C PartitionMagic recovery
+40 Venix 80286
+41 PPC PReP Boot
+42 SFS
+4D QNX4.x
+4E QNX4.x 2nd part
+4F QNX4.x 3rd part
+50 OnTrack DM
+51 OnTrack DM6 Aux1
+52 CP/M
+53 OnTrack DM6 Aux3
+54 OnTrackDM6
+55 EZ-Drive
+56 Golden Bow
+5C Priam Edisk
+61 SpeedStor
+63 GNU HURD or SysV
+64 Novell Netware 286
+65 Novell Netware 386
+70 DiskSecure Multi-Boot
+75 PC/IX
+80 Old Minix
+81 Minix / old Linux
+82 Linux swap / Solaris
+83 Linux
+84 OS/2 hidden C: drive
+85 Linux extended
+86 NTFS volume set
+87 NTFS volume set
+88 Linux plaintext
+8E Linux LVM
+93 Amoeba
+94 Amoeba BBT
+9F BSD/OS
+A0 IBM Thinkpad hibernation
+A5 FreeBSD
+A6 OpenBSD
+A7 NeXTSTEP
+A8 Darwin UFS
+A9 NetBSD
+AB Darwin boot
+AF HFS / HFS+
+B7 BSDI fs
+B8 BSDI swap
+BB Boot Wizard hidden
+BE Solaris boot
+BF Solaris
+C1 DRDOS/sec (FAT-12)
+C4 DRDOS/sec (FAT-16 <
+C6 DRDOS/sec (FAT-16)
+C7 Syrinx
+DA Non-FS data
+DB CP/M / CTOS / ...
+DE Dell Utility
+DF BootIt
+E1 DOS access
+E3 DOS R/O
+E4 SpeedStor
+EB BeOS fs
+EE GPT
+EF EFI (FAT-12/16/32)
+F0 Linux/PA-RISC boot
+F1 SpeedStor
+F4 SpeedStor
+F2 DOS secondary
+FB VMware VMFS
+FC VMware VMKCORE
+FD Linux raid autodetec
+FE LANstep
+FF BBT
