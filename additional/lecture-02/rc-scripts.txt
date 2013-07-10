@@ -1,0 +1,27 @@
+In the System V rc directory style we have the following dirs:
+
+The Old System V directory structure keeps all rc scripts in /etc/rc.d .
+
+The new System V directory structure has two variations:
+    /etc/init.d/
+    /etc/rc.d/rc0.d/
+    /etc/rc.d/rc1.d/
+    /etc/rc.d/rc2.d/
+    /etc/rc.d/rc3.d/
+    /etc/rc.d/rc4.d/
+    /etc/rc.d/rc5.d/
+    /etc/rc.d/rc6.d/
+and:
+    /etc/init.d/
+    /etc/rc.d/
+    /etc/rc0.d/
+    /etc/rc1.d/
+    /etc/rc2.d/
+    /etc/rc3.d/
+    /etc/rc4.d/
+    /etc/rc5.d/
+    /etc/rc6.d/
+
+The files within the rcX.d dirs are symlinks to /etc/init.d.
+The dirs /etc/rcX.d on some distributions are links to /etc/rc.d/rcX.d.
+
