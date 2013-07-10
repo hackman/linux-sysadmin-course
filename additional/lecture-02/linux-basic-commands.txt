@@ -1,0 +1,55 @@
+cd 		- change dir
+pwd		- show current directory
+ls 		- list files & dirs
+
+cp		- copy file
+mv		- move/rename file
+rm		- remove file/dir
+ln		- link file (symbolic or hard)
+mkdir	- create dir
+rmdir	- remove dir
+
+touch	- creates empty file if not existing or changes its last modified date if existing
+echo	- prints information on the stdout
+cat		- show the contents of a file
+cut		- cuts a line in parts(shows only one column of a file)
+paste	- append columns
+tail	- shows N lines from the end of a file
+head	- shows N lines from the beginning of a file
+wc		- word/line count
+nl		- number of lines
+grep	- search for string with regular expression
+sort	- sorting lines
+uniq	- Locate identical lines
+less	- view contents of a file with support for paging and search
+more	- paging software
+date	- show current date, set date
+
+tar		- GNU Tar archiver
+gzip	- GNU Zip archiver
+bzip2	- GNU BZip2 archiver
+
+df		- filesystem usage
+du		- file space usage
+sync	- flush the buffers to all disk
+mount	- mount a device
+umount	- umount a device
+
+who		- check who is logged in
+w		- check who is logged in and what cmd he is currently executing
+ps		- show process list
+pstree	- show process list tree
+pgrep	- search trough the process list
+kill	- send signal to a process
+killall	- to all processes like name
+uptime	- check the machine uptime
+top		- System monitor
+
+chown	- change owner or owner and group
+chgrp	- change group
+chmod	- change permissions
+
+lsattr	- list advanced attributes
+chattr	- change advanced attributes
+
+
