@@ -1,0 +1,44 @@
+DEFAULT local
+PROMPT 1
+TIMEOUT 60
+DISPLAY boot.msg
+F1 boot.msg
+F2 help.msg
+
+LABEL local
+  LOCALBOOT 0
+
+LABEL rescue
+  KERNEL rip/kernel
+  APPEND vga=normal initrd=rip/rootfs.cgz root=/dev/ram0 rw
+
+LABEL memtest
+  KERNEL memtest86+-2.01
+
+LABEL dsl
+  KERNEL dsl/linux24
+  APPEND ramdisk_size=100000 init=/etc/init lang=us apm=power-off vga=normal initrd=dsl/dsl2.gz nomce noapic quiet BOOT_IMAGE=knoppix
+
+
+LABEL fedora9
+  KERNEL fedora/9/vmlinuz
+  APPEND initrd=fedora/9/initrd.img 
+
+
+LABEL centos56
+  KERNEL centos/5.6/vmlinuz
+  APPEND initrd=centos/5.6/initrd.img text
+
+LABEL centos64
+  KERNEL centos/x86/6.4/vmlinuz
+  APPEND initrd=centos/x86/6.4/initrd.img text
+
+LABEL centos6
+  KERNEL centos/6/vmlinuz
+  APPEND initrd=centos/6/initrd.img text
+
+LABEL debian
+  KERNEL dlinux
+  APPEND initrd=dinitrd.gz
+
+
