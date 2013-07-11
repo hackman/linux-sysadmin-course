@@ -51,7 +51,7 @@ Kernel image - This is the compiled kernel binary file. It is the first thing th
 
 Init RAM FS image (initrd) - Initrd is a compressed file that is used to store additional user space tools or drivers needed for booting.
 It is required for systems that need to boot of LVM or SW RAID partitions. In the most cases it is used only to make a single kernel more 
-portable between machines and support big number of drivers. The initrd file contains its own directory tree and usualy only the drivers
+portable between machines and support big number of drivers. The initrd file contains its own directory tree and usually only the drivers
 that are needed for the machine where it runs.
 
 Initrd files are pushed to the memory and extracted there. During boot, they reside in the memory and their files are referenced from there.
