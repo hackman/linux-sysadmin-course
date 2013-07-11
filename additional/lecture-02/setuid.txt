@@ -1,0 +1,180 @@
+SETUID syscall: modifies userIDs
+
+Access control in Unix systems: based on a process's userIDs
+
+Each process has a set of userIDs and groupIDs
+ -- these userIDs and groupIDs determine which resources [files, network
+    ports, ...] that process can access
+
+ -- the privileged userIDs and groupIDs allow a process to access
+    restricted system resources
+
+userID == 0 --> ROOT; process can access all system resources
+
+In some apps, a user process needs extra privileges; e.g. permission to
+read or change the password file
+
+"principle of least privilege" == process should DROP those extra privs, ASAP
+
+UID-setting syscalls: offered by UNIX systems; used by a process to raise
+& drop its privilege level; poorly designed, not well documented
+
+USER ID MODEL:
+ - each user has a unique UID
+ - UID determines which resources a user can access
+
+Each process has 3 UIDs:
+(1) real UID: identifies process OWNER
+(2) effective UID: used in access control decisions
+(3) saved user ID: stores a previous UID so that it can be restored later
+
+Each process has 3 groupIDs:
+(1) real GID
+(2) effective GID
+(3) saved GID
+
+In Linux, each process *also* has:
+(1) FSUID
+(2) FSGID
+--used for access control to the file system
+--FSUID usually follows effective UID unless it's explicitly set by the
+setfsuid syscall
+--FSGID usually follows effective GID unless explicitly set by setfsgid()
+
+When a process is created by FORK, the created process inherits its
+parent's UIDs
+
+When a process executes a NEW FILE via EXEC, that executing process keeps
+ITS OWN UIDs unless the SETUID in the new file is set.
+ -- if the SETUID bit is set in the file we're EXECing, then
+    --> process's EUID == file owner's UID
+    --> process's SUID == file owner's UID
+
+To drop privilege temporarily, a process will remove the privileged UID
+from its EUID but keep it saved as its saved UID (SUID); later the process
+can restore the privileges by setting its EUID to its SUID. To drop
+privileges permanently a process removes the privileged UID from all three
+of its UIDs; thereafter the process cannot restore that privileged access
+
+Bell Labs patented Dennis Ritchie's idea to have a bit to indicate whether
+when a file is executed that file should be executed with the privileges
+of its owner (normal) or THE INVOKER (setuid bit == 1 for latter case).
+
+Early UNIX: a process had 2 UIDs, RUID & EUID
+--Only one syscall, SETUID:
+
+       if (EUID == 0)
+	  RUID = ;
+          EUID = ;
+
+       else
+          EUID = ;
+
+Problem: no way to temporarily drop root privileges only to restore them later
+
+         UNIX
+         /  \
+        /    \
+    Sys V    BSD
+
+System V: added SUID and SETUEID syscall
+
+SETEUID:
+           if (EUID == 0)
+	      EUID can be set to any value;
+           else
+              EUID can be set to RUID or SUID ONLY
+
+SETUID was modified:
+  
+           if (EUID != 0)
+	      EUID can be set;
+           else
+	      EUID = ;
+              RUID = ;
+              SUID = ;
+
+Sys V: so if you're not root, you can use SETUID to set EUID and you can
+use SETEUID to set EUID = RUID or EUID = SUID; if you ARE root, you can
+use SETUID to set EUID, SUID, RUID and you can use SETEUID to set EUID to
+anything; 
+
+BSD: dropped SETUID, created SETREUID
+
+SETREUID:   if (EUID == 0)
+	       RUID = anyUID;
+	       EUID = anyUID;
+            else
+               RUID = EUID; OR
+	       EUID = RUID;
+
+POSIX: SETUID can set all three UIDs whether you're root or not
+
+SETRESUID(newRUID,newEUID,newSUID)
+ -- to call this function, the EUID of the calling process must be ROOT OR
+ -- each of the 3 params must equal one of the process's 3 UIDs
+ -- all or nothing effect;
+ -- FreeBSD & Linux offer SETRESUID; Solaris does not;
+
+SOLARIS:  through /proc FS any process can examine its 3 UIDs and a
+superuser process can set any of those UIDs;
+
+SETEUID(newEUID):
+--sets EUID; doesn't touch RUID or SUID
+--Among UNIX systems, if the current EUID != ROOT
+  (a) Solaris, Linux
+      newEUID can equal EUID, RUID, or SUID
+  (b) FreeBSD
+      newEUID can equal RUID or SUID
+
+SETREUID(newRUID,newEUID)
+--modifies RUID and EUID and in some cases SUID
+(a) Solaris & Linux: a process can swap RUID & EUID
+(b) FreeBSD: a process can't switch RUID & EUID
+
+SETUID(newUID): POSIX
+(a) Linux & Solaris: newUID must equal RUID or SUID (if EUID != 0)
+(b) FreeBSD: newUID may equal EUID, too
+
+The action of SETUID depends on whether th process is privileged or not
+(a) Linux & Solaris:
+    
+    if (EUID == 0)
+       setuid(newID) sets RUID = newUID;
+			  EUID = newUID;
+			  SUID = newUID;
+
+    else
+       setuid(newUID) sets EUID = newUID;
+
+(b) FreeBSD:
+
+    setuid(newID) sets RUID = EUID = SUID = newID regardless of whether
+    current EUID is 0 or not
+
+SETFSUID(newFSUID)
+--FSUID used for access control to the FS
+--FSUID == EUID unless FSUID explicitly set
+--tries to maintian invariant: FSUID = 0 only if RUID, SUID, OR EUID == 0
+--if change EUID, that changed val will be propagated to FSUID
+
+Buggy tho; while every setuid & setreuid sets FSUID to EUID, if call
+setresuid and *don't change* EUID, then setresuid will NOT set FSUID = EUID
+
+E.g. RUID = EUID = SUID = 0; FSUID = 0;
+
+setresuid(x,x,-1)	RUID = EUID = FSUID = x;	SUID = 0;
+setfsuid(0)         RUID = EUID = x; 			SUID = FSUID = 0;
+setresuid(-1,-1,x)	RUID = EUID = SUID = x;		FSUID = 0;
+
+ --> INVARIANT violated
+
+(passing -1 as value means don't change this UID)
+
+SETGID & relatives: 
+
+ permissions check for setregid != permissions check for setreuid
+
+ (in Solaris)
+
+Privileges carried by EUID... so having EGID == 0 doesn't buy you anything
