@@ -1,0 +1,80 @@
+1. Linux History
+2. Filesystems
+2.1. Ext2, Ext3, Ext4
+2.2. ReiserFS, ReiserFS4
+2.3. Cluster/Network file systems
+2.3.1. NFS
+2.3.2. CIFS
+2.3.4. GlusterFS
+2.3.5. FHGFS
+2.3.6. OCFS2/GFS2 + DRBD
+2.4. Psuedo Filesystems
+2.4.1. Proc FS
+2.4.2. Sys FS
+2.4.3. Shm FS
+2.5. Swap
+2.6. FUSE
+2.7. Directory structure
+3. Partitioning
+3.1. LVM1 & LVM2
+3.2. RAID 1-10
+3.3. Partition schemes
+4. Linux Security Model
+4.1. File permitions
+4.2. Users & Groups
+4.3. Special file flags
+4.4. Special attributes
+4.5. Device files
+5. Boot procedure
+5.1. Boot loaders
+5.2. INIT/upstart/systemd
+5.3. Runlevels
+6. Processes
+6.1. What is a process, how to work with it
+6.2. Process security (RUID/RGID,EUID/EGID,SUID/SGID)
+6.3. Inter-process communication(IPC) - Signals, Files, Flock, SHM, MQ, SEM, MMAP
+6.4. /proc/PID/*
+7. Command Line Shells - SH, BASH
+8. Editors
+8.1. VI, VIM, vim configuration
+8.2. Pico
+8.3. mcedit
+9. Networking
+9.1. Basic configurations
+9.1.1. ifconfig, ipmask, ipcalc, route
+9.1.2. iwconfig, iwlist, wpa_suplicant
+9.1.3. resolving
+9.2. Advanced configuration
+9.2.1. BIND, whois, host, dig
+9.2.2. dhcpcd, dhclient
+9.2.3. ip
+9.2.4. iptables, ebtables
+9.2.5. vconfig, brctl, bonding
+10. Software install
+10.1. Build from source
+10.2. Packaging systems
+10.2.1. RPM - Fedora, RedHat, CentOS, Mandriva
+10.2.2. DEB - Debian, Ubuntu
+10.2.3. tgz - Slackware
+11. Basic system services
+11.1. syslogd
+11.2. crond/atd
+11.3. xinetd
+11.4. logrotate
+11.5. telnet/ssh
+12. Advanced services
+12.1. Apache web server
+12.2. Nginx web server
+12.3. MySQL database server
+12.4. PgSQL database server
+13. Building Kernel
+13.1. Gathering information
+13.2. Configuring kernel
+13.3. Compiling the kernel
+13.4. Installing the new kernel
+13.5. Changeing kernel parameters(sysctl)
+13.6. Kernel module parameters (modprobe.conf)
+13.7. Building kernel with initrd/dracut
+14. Patch/Security management
+14.1. How to apply patches/upgrade system software
+14.2. How often and how to apply security patches
