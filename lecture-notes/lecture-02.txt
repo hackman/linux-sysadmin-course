@@ -1,0 +1,191 @@
+
+Booting and Boot loaders
+
+Boot loaders
+* LILO
+ - config - /etc/lilo.conf
+	image = /boot/bzImage-3.8.2-terion
+		root = /dev/sda2
+		label = Terion-3.8.2
+		read-only
+ - filename size limit 8 (only older lilo verions)
+ - serial console configuration
+	serial=0,9600n8
+	timeout=100
+
+* GRUB
+ - config - /boot/grub/menu.lst
+	title CentOS (2.6.18-348.el5)
+    	root (hd0,0)
+		kernel /vmlinuz-2.6.18-348.el5 ro root=/dev/main/root rhgb quiet crashkernel=128M@16M panic=5
+		initrd /initrd-2.6.18-348.el5.img
+ - serial console configuration
+	serial --unit=1 --speed=19200
+	terminal --timeout=8 console serial
+	kernel /vmlinuz-2.6.18-348.el5 ro root=/dev/main/root rhgb quiet crashkernel=128M@16M panic=5 console=tty0 console=ttyS1,19200n8
+
+* GRUB2 
+ - config - /boot/grub2/grub.cfg
+ - very flexible configuration
+ - very complex configuration
+
+* ISOlinux
+ - config - /isolinux.cfg
+	label 2
+		kernel /kernel/memdisk
+		append initrd=/images/bootnuke.imz
+ - filename size limit 8
+ - serial console setup
+	serial 0 9600 0xab3
+
+* PXEboot
+ - config - /tftpboot/pxelinux.cfg/default
+	LABEL centos64
+		KERNEL centos/x86/6.4/vmlinuz
+		APPEND initrd=centos/x86/6.4/initrd.img text
+ - filename size limit 8
+
+IMPORTANT - video resolutions and backgrounds with boot loaders are not compatible with serial consoles and are big overhead with KVMs
+
+Kernel image - This is the compiled kernel binary file. It is the first thing that the boot loader search for.
+
+Init RAM FS image (initrd) - Initrd is a compressed file that is used to store additional user space tools or drivers needed for booting.
+It is required for systems that need to boot of LVM or SW RAID partitions. In the most cases it is used only to make a single kernel more 
+portable between machines and support big number of drivers. The initrd file contains its own directory tree and usualy only the drivers
+that are needed for the machine where it runs.
+
+Initrd files are pushed to the memory and extracted there. During boot, they reside in the memory and their files are referenced from there.
+
+How to gain local root access to any linux machine:
+	init=/bin/bash (at the end of the parameters line)
+	mount -o remount,rw /
+
+Note: Some older kernels(before 3.0) have a limit of 8 kernel parameter on the parameters line.
+
+Linux boot procedure
+	
+BIOS 
+ -> Storage device 
+    -> boot loader 
+       -> Kernel 
+         -> /sbin/init
+BIOS -> Storage device -> boot loader -> Kernel -> Initrd -> /sbin/init -> load modules -> execute custom init scripts -> chroot to /dev/root
+
+The init system
+1. What is INIT and why we need it?
+2. RunLevels
+	0 - halt
+	6 - reboot
+3. What is a terminal?
+4. What is a shell?
+
+The three INIT systems:
+1. The old and wise System V
+ - config /etc/inittab
+2. New and compatible with System V - UpStart
+ - config /etc/init.conf & /etc/init/*.conf
+3. The new and totally fucked SystemD
+ - config /etc/systemd/*
+
+Execution differences between the three init systems:
+
+System V sequential
+
+  Kernel -> init -> app1 -> app1 -> app3 ... -> login 
+
+System V parallel
+
+  Kernel -> init -> app1 -> app2 ----> app3 -> app6 ----> app7  -> login
+                                   |-> app4           |-> app8
+                                   \-> app5           |-> app9
+                                                           \-> app10
+
+Upstart
+
+  Kernel -> init -> app1 -> app2 ----> app3
+                                   |-> app4
+                                   |-> app5
+                                   |-> app6 -> login
+                                   |-> app7
+                                   |-> app8
+                                   \-> app9
+
+Systemd (massively parallel)
+
+  Kernel -> init --> app1
+                 |-> app2
+                 |-> app4
+                 |-> app5
+                 |-> haldaemon
+                 |-> app7 -> login
+                 |-> messagebus
+                 \-> app9
+
+
+Init scripts and configuration:
+
+System V
+ - config /etc/inittab
+ - Old(Unix) scripts structure
+	/etc/rc.d/rc.M rc.S and so on
+ - New scripts structure
+	/etc/init.d/* - init scripts
+	/etc/rc*.d    - directories containing links to the init scripts
+ - Comands used for management: init, telinit, cp, mv, ln, rm
+
+UpStart
+ - config /etc/init.conf & /etc/init/*.conf
+ - Commands used for management: start, stop, status, initctl
+ 
+SystemD
+ - config /etc/systemd/*
+ - /lib/systemd/*
+ - Change the default target: ln -s /usr/lib/systemd/system/multi-user.target /etc/systemd/system/default.target
+ - Commands used for management: systemctl, systemd-sysv-convert
+
+
+
+Linux Security Model
+
+1. Linux has users and groups
+ - /etc/passwd
+ - /etc/group - since 1992
+ - /etc/shadow
+ - root and everyone else :)
+
+2. File system security
+ - read
+ - write
+ - execute (search for directories)
+ - user(owner) permissions
+ - group(owning group) permissions
+ - everyone else
+
+3. Advanced FS permissions
+ - File/Directory attributes
+ - POSIX ACLs
+
+4. What is a process?
+ - Forground
+ - Background
+ - Daemon
+
+5. Process security
+ - Real UID/GID
+ - Effective UID/GID
+ - Saved UID/GID
+
+6. Capabilities
+ - CAP_SYS_ADMIN - the new root
+ - Permitted (formerly known as forced): These capabilities are automatically permitted to the thread, regardless of the thread's inheritable capabilities.
+ - Inheritable (formerly known as allowed): This set is ANDed with the thread's inheritable set to determine which inheritable capabilities are enabled in the permitted set of the thread after the execve(2).
+ - Effective: If this bit is set, then during an execve(2) all of the new permitted capabilities for the thread are also raised in the effective set.
+ - Transformation of Capabilities During execve()
+   During an execve(2), the kernel calculates the new capabilities of the process using the following algorithm:
+
+           P'(permitted) = (P(inheritable) & F(inheritable)) | (F(permitted) & cap_bset)
+
+           P'(effective) = F(effective) ? P'(permitted) : 0
+
+           P'(inheritable) = P(inheritable)    [i.e., unchanged]
+
