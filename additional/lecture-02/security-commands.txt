@@ -1,0 +1,36 @@
+commands:
+useradd - add new user
+userdel - removes existing user
+usermod - modifies user information
+passwd - change user passowd
+groupadd - add new group
+groupdel - removes existing group
+groupmod - change group name
+groups - show all groups in which you are member
+gpasswd - change group password
+chsh - chnage user shell
+chfn - change user info
+chown - change the owner
+chgrp - change the group owner
+chmod - change file permissions
+umask - change the file creation mask
+lsattr - list file attributes
+chattr - change file attributes
+
+additional chmod:
+  1 - sticky bit
+  2 - set gid 
+  3 - set gid & sticky bit
+  4 - set uid
+  5 - set uid & sticky bit
+  6 - set uid & set gid 
+  7 - set uid & set gid & sticky bit
+
+additional file attributes:
+  A - noatime
+  a - append only
+  i - immutable
+  j - jurnaled (useful only with ext3)
+  s - secure delete
+  S - sync to disk
+  u - undelete (not for ext2 & ext3)
