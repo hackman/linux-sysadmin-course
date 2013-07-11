@@ -1,4 +1,6 @@
 commands:
+id - prints your user id, user name, and all groups that you are part of
+whoami - tells you your user name at the moment
 useradd - add new user
 userdel - removes existing user
 usermod - modifies user information
