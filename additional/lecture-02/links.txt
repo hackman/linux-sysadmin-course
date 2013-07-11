@@ -1,0 +1,22 @@
+
+ISOlinux configuration - http://www.syslinux.org/wiki/index.php/Isolinux.cfg
+
+GRUB Serial console setup:
+	http://www.tldp.org/HOWTO/Remote-Serial-Console-HOWTO/configure-boot-loader-grub.html
+	http://www.gnu.org/software/grub/manual/html_node/Serial-terminal.html
+	http://www.cyberciti.biz/faq/linux-serial-console-howto/
+
+LILO Serial console setup:
+	http://www.tldp.org/HOWTO/Remote-Serial-Console-HOWTO/configure-boot-loader-lilo.html
+	
+Syslinux Serial console setup:
+	http://www.tldp.org/HOWTO/Remote-Serial-Console-HOWTO/configure-boot-loader-syslinux.html
+
+PXEboot:
+	http://www.linuxjournal.com/magazine/pxe-magic-flexible-network-booting-menus
+
+UpStart:
+	http://upstart.ubuntu.com/
+
+SystemD:
+	http://www.freedesktop.org/wiki/Software/systemd/
