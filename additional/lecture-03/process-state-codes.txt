@@ -1,0 +1,18 @@
+PROCESS STATE CODES
+
+D uninterruptible sleep (usually IO)
+R runnable (on run queue)
+S sleeping - waiting for something
+T traced or stopped - paused or currently in trace
+W paging - in the moment it is alocating memory
+X dead - you should not see ghosts :)
+Z a defunct ("zombie") process - a process left behind from its parent
+
+Additional process state codes
+
+< high-priority (not nice to other users)
+N low-priority (nice to other users)
+L has pages locked into memory (for real-time and custom IO)
+s is a session leader
+l is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
++ is in the foreground process group
