@@ -175,3 +175,7 @@ Linux Security Model
  - File/Directory attributes
  - POSIX ACLs
 
+4. What is the difference between Hard and Soft link?
+ - Softlink/Symlink
+ - Hardlink
+
