@@ -52,16 +52,27 @@ Capabilities
 6.1. What is a process, how to work with it
   process modes: kernel, user, guest
   user commands: ps, pidof, pgrep, pstree, top
+
 6.2. Process security (RUID/RGID,EUID/EGID,SUID/SGID)
+
 6.3. Process signals
   user commands: kill, pkill, skill
+
 6.4. /proc/PID/*
+
 6.5. Working with a processes
   nice, renice, snice
   bg, fg, jobs, nohup
-6.6. Debuging a process
+
+6.6. Switch User
+  su
+  sudo
+
+6.7. Basic debugging techniques
   lsof
-  strace
   fuser
+  strace
+  ltrace
+  gdb
 
 
