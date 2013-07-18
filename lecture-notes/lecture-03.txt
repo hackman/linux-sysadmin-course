@@ -1,0 +1,67 @@
+
+What is a process ?
+
+A process is an executed copy of a binary executable file.
+The prcoesses in Linux have Process IDs - PID
+They are separated in three modes
+ * kernel - process that runs inside the kernel
+ * user   - process that is descendant of init
+ * guest  - process that is actualy a guest operating system
+
+In Linux the user processes are three types:
+ * Forground - a process that is connected to the console and has its standard output displayied on the console
+ * Background - a process that is connected to the console but has its standard output and/or error hidden from the console
+ * Daemon - a processe that is not associated with any console
+
+Difference between a process and a thread
+ * The process has its own memory
+ * The thread shares its memory with other threads
+
+ * The processes has its own pid
+ * The threads share the pid of their parents
+
+ * The process is, by its nature, a single threaded application
+
+
+
+Process security
+ * Real UID/GID
+ * Effective UID/GID
+ * Saved UID/GID
+
+Capabilities
+ - CAP_SYS_ADMIN - the new root
+ - Permitted (formerly known as forced): These capabilities are automatically permitted to the thread, regardless of the thread's inheritable capabilities.
+ - Inheritable (formerly known as allowed): This set is ANDed with the thread's inheritable set to determine which inheritable capabilities are enabled in the permitted set of the thread after the execve(2).
+ - Effective: If this bit is set, then during an execve(2) all of the new permitted capabilities for the thread are also raised in the effective set.
+ - Transformation of Capabilities During execve()
+   During an execve(2), the kernel calculates the new capabilities of the process using the following algorithm:
+
+           P'(permitted) = (P(inheritable) & F(inheritable)) | (F(permitted) & cap_bset)
+
+           P'(effective) = F(effective) ? P'(permitted) : 0
+
+           P'(inheritable) = P(inheritable)    [i.e., unchanged]
+
+	P  - the capabilities before the process was started
+	P' - the capabilities after the process was started
+	F  - file capabilities
+
+
+6. Processes
+6.1. What is a process, how to work with it
+  process modes: kernel, user, guest
+  user commands: ps, pidof, pgrep, pstree, top
+6.2. Process security (RUID/RGID,EUID/EGID,SUID/SGID)
+6.3. Process signals
+  user commands: kill, pkill, skill
+6.4. /proc/PID/*
+6.5. Working with a processes
+  nice, renice, snice
+  bg, fg, jobs, nohup
+6.6. Debuging a process
+  lsof
+  strace
+  fuser
+
+
