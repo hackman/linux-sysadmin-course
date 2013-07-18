@@ -179,3 +179,9 @@ Linux Security Model
  - Softlink/Symlink
  - Hardlink
 
+5. Base user configuration 
+ - /etc/skel folder
+ - /etc/login.defs
+ - /etc/nsswitch.conf
+ - /etc/securetty
+ - /etc/login.access
