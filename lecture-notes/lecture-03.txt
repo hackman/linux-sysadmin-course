@@ -68,11 +68,13 @@ Capabilities
   su
   sudo
 
-6.7. Basic debugging techniques
-  lsof
-  fuser
-  strace
-  ltrace
-  gdb
-
+6.7. Basic Inter Process Communication (IPC)
+ - FIFO devices
+ - Shell pipes
+ - Unix domain sockets
+ - Shared memory
+ - Memory mapped files
+ - Message queues
+ - Semaphores
+ - File locks
 
