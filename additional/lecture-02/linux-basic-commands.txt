@@ -58,4 +58,6 @@ chattr	- change advanced attributes
 getfacl - list file system ACLs
 setfacl - set file system ACLs
 
+getfattr - list file attributes (man 5 attr)
+setfattr - set file attributes (man 5 attr)
 
