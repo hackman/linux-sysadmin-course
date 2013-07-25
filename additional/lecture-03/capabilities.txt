@@ -1,0 +1,19 @@
+
+man capabilities
+
+getcap - list file capabilities
+setcap - set file capabilities
+
+# setcap 'cap_chown=iep' /usr/bin/php-cgi
+# getcap /usr/bin/php-cgi
+/usr/bin/php-cgi = cap_chown+eip
+
+# setcap 'cap_sys_chroot=iep' /usr/bin/php-cgi
+# getcap /usr/bin/php-cgi
+/usr/bin/php-cgi = cap_sys_chroot+eip
+
+# setcap 'cap_sys_chroot=iep cap_chown+ep' /usr/bin/php-cgi
+# getcap /usr/bin/php-cgi
+/usr/bin/php-cgi = cap_sys_chroot+eip cap_chown+ep
+
+
