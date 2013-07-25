@@ -1,0 +1,34 @@
+
+	Bash Training
+
+	4. Bash scripting - one line scripts, multiline scripts
+	4.1. Where to read:
+	4.2. Variables
+	4.3. File descriptors
+	4.4. Control structures
+	4.5. Functions
+	4.6. Debuging
+	4.7. Bash arithmetics
+	4.8. File tests
+
+	4. Bash scripting - one line scripts, multiline scripts
+
+	4.1. Where to read:
+		http://www.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
+		http://www.tldp.org/LDP/abs/html/ - Advanced bash scripting 
+		--- man bash ---
+
+	4.2. Variables
+		export, declare, typeset, readonly
+		local, global
+		declare - защо се нуждаем от него
+
+	4.3. File descriptors
+	4.4. Control structures
+	4.5. Functions
+	4.6. Debuging
+	4.7. Bash arithmetics
+	4.8. File tests
+
+
+
