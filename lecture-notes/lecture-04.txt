@@ -1,0 +1,27 @@
+1. What is bash?
+1.1. What is a shell
+1.2. Brief history of the shells
+1.3. What bash gives us
+
+2. Basic functions
+2.1. Environment
+2.2. History - configuration & search in history
+2.3. Command completion
+2.4. Command prompt
+2.5. Aliases
+2.6. Working with the command line
+
+3. Bash configurations
+3.1. /etc/bashrc
+3.2. /etc/profile
+3.3. ~user/.bashrc
+3.4. ~user/.profile
+
+4. Bash scripting - one line scripts, multiline scripts
+4.1. The presentation
+4.2. Debuging
+4.3. File tests
+
+5. Regular expressions
+6. Grep, Sed & Awk
+7. Expect
