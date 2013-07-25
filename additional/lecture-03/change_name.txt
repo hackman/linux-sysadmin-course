@@ -1,0 +1,35 @@
+Explanation of the source:
+
+1. copy the name of the program (as executed) to a variable $name
+2. get the current working directory
+3. define the deemonize function
+4. changing the name of the program(as seen in the ps)
+5. changing the current working directory so we can't find where it is
+6. becoming a daemon(in order to remove the file we have to fork, cause otherwise the file is in use and can't be removed)
+6. removing leading . if we have any
+7. removing the script file
+
+The script:
+
+#!/usr/bin/perl
+use warnings;
+use strict;
+use Cwd;
+my $name = $0;
+my $cwd = getcwd;
+sub daemonize
+{
+     open STDIN, '/dev/null' or die "Can't read /dev/null: $!";
+     open STDOUT, '>/dev/null' or die "Can't write to /dev/null: $!";
+     defined(my $pid = fork) or die "DIE: Cannot fork process: $! \n";
+     exit if $pid;
+     umask 0;
+     open STDERR, '>>/dev/null' or die "DIE: Cannot write to stderr: $! \n";
+}
+
+$0='CHANGED';
+chdir '/tmp';
+daemonize;
+$name =~ s/^\.//;
+unlink $cwd.$name;
+sleep 1000;
