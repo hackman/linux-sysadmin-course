@@ -1,0 +1,63 @@
+= More information =
+For more information read the proc info pages
+ # info proc mappings
+
+
+= A standard line from /proc/<PID>/stat =
+ 1426 (cat) R 679 1426 679 34823 1426 4194304 204  0   0   0   0   0   0   0  20   0  1 0 42644912 2002944 134 4294967295 134512640 134527680 3215378672 3215378120 3085730862   0   0   0   0   0   0   0 17  0  0  0    0   0   0  
+
+= Description of some of the components =
+# pid_nr_ns(pid, ns) - Process ID
+# tcomm (cat) - Process CMD
+# state - Process STATE: 
+#* R (running)
+#* S (sleeping)
+#* D (disk sleep)
+#* T (stopped)
+#* T (tracing stop)
+#* Z (zombie)
+#* X (dead)
+# ppid - Process Parent Pid
+# pgid - Process Group ID
+# sid - Process Session Leader ID
+# tty_nr - Terminal on which the process is running
+# tty_pgrp - Terminal Process ID
+# task->flag - Process Flags
+# min_flt - Thread statistic (unknown)
+# cmin_flt - Thread statistic (unknown)
+# maj_flt - Thread statistic (unknown)  
+# cmaj_flt - Thread statistic (unknown)
+# cputime_to_clock_t(utime) - Process time stats (unknown)
+# cputime_to_clock_t(stime) - Process time stats (unknown) 
+# cputime_to_clock_t(cutime) - Process time stats (unknown)
+# cputime_to_clock_t(cstime) - Process time stats (unknown)
+# priority - Process priority (altered by NICE/RENICE)
+# nice - Process Nice level (altered by NICE/RENICE)
+# 0 - Simple 0 left for compatibility 
+# num_threads - Current number of threads for this process
+# start_time - Start time of the process in nanoseconds
+# vsize - Process Virtual Memory size (unknown scale)
+# get_mm_rss(mm)  
+# rsslim - Specifies the limit (in pages) of the process's resident set (the number of virtual pages resident in RAM). This  limit  only  has effect in Linux 2.4.x, x < 30, and there only affects calls to madvise(2) specifying MADV_WILLNEED
+# mm->start_code
+# mm->end_code 
+# mm->start_stack
+# esp - Process's current Stack Pointer value
+# eip - Process's current Instruction Pointer value
+# task->pending.signal.sig[0] & 0x7fffffffUL - Pending signals for this process
+# task->blocked.sig[0] & 0x7fffffffUL - What signals are not accepted by this process
+# sigign      .sig[0] & 0x7fffffffUL - What signals are ignored by this process
+# sigcatch    .sig[0] & 0x7fffffffUL - What signals are implemented by this process
+# wchan 
+# 0UL 
+# 0UL 
+# task->exit_signal 17
+# task_cpu(task) 
+# task->rt_priority 
+# task->policy 
+# delayacct_blkio_ticks(task) 
+# cputime_to_clock_t(gtime) 
+# cputime_to_clock_t(cgtime)
+
+
+
