@@ -1,0 +1,15 @@
+
+    Vim has been ported to a much wider range of OS's than vi.
+    Vim includes support (syntax highlighting, code folding, etc) for several popular programming languages (C/C++, Python, Perl, shell, etc).
+    Vim integrates with cscope.
+    Vim can be used to edit files using network protocols like SSH and HTTP.
+    Vim includes multilevel undo/redo.
+    Vim allows the screen to be split for editing multiple files.
+    Vim can edit files inside a compressed archive (gzip, zip, tar, etc).
+    Vim includes a built in diff for comparing files (vimdiff).
+    Vim includes support for plugins, and finer control over config and startup files.
+    Vim can be scripted with vimscript, or with an external scripting language (e.g. python, perl, shell).
+
+	Use the following command for a full list of differences:
+
+	:h vi-differences 
