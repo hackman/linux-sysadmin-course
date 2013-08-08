@@ -1,0 +1,27 @@
+[:alnum:]  Alphanumeric characters.
+[:alpha:]  Alphabetic characters.
+[:blank:]  Space or tab characters.
+[:cntrl:]  Control characters.
+[:digit:]  Numeric characters.
+[:graph:]  Characters that are both printable and visible.  (A space is printable, but not visible, while an a is both.)
+[:lower:]  Lower-case alphabetic characters.
+[:print:]  Printable characters (characters that are not control characters.)
+[:punct:]  Punctuation characters (characters that are not letter,  digits,  control  characters,  or  space characters).
+[:space:]  Space characters (such as space, tab, and formfeed, to name a few).
+[:upper:]  Upper-case alphabetic characters.
+[:xdigit:] Characters that are hexadecimal digits.
+
+\s - space or tab
+\w - a whole word
+\d - digit
+
+\a        alarm, that is, the BEL character (hex 07)
+\cx       "control-x", where x is any ASCII character
+\e        escape (hex 1B)
+\f        formfeed (hex 0C)
+\n        linefeed (hex 0A)
+\r        carriage return (hex 0D)
+\t        tab (hex 09)
+\ddd      character with octal code ddd, or back reference
+\xhh      character with hex code hh
+\x{hhh..} character with hex code hhh..
