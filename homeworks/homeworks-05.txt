@@ -1,0 +1,12 @@
+1. Login on grizzly and get the home folders of the usernames that have numbers in them.
+2. With a single regular expression get all services that have the string 'file' in their names from /etc/services and are runing only on UDP.
+3. On grizzly, parse /var/spool/mail/root and give me the timestamps of every e-mail that has 'SECURITY information' in its subject.
+4. Execute this: lynx --dump http://cnn.com
+   Now get a the count of:
+   - how many internal links (links to the same hostname - cnn.com)
+   - how many external links (links to hostnames other then cnn.com)
+   - how many links to subdomains (links to hostnames *.cnn.com)
+   - how many links to direct javascript executions (something like this 'javascript:')
+5. Execute this: lynx --dump http://cnn.com
+   Now get only the relative path to all links that are on hostnames *.cnn.com and cnn.com included.
+6. 
