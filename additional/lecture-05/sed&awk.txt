@@ -1,0 +1,30 @@
+
+	1. Kakwo e sed
+	2. Kakvo e awk
+	
+	3. Za kakvo moje da se izpolzva sed
+
+	4. Osnovni komandi na sed
+	4.1. Obhvat na komandite
+	4.1.1. Vsichki redove
+	4.1.2. Samo opredelen red
+	4.1.2.1. Nomera na reda
+	4.1.2.2. RE koeto hvashta samo opredelen red
+	4.1.3. Ot purviq do opredeln red 1,23
+		1,23
+		1,//
+	4.1.4. Ot opredelen RE do drug RE
+		/RE/,/RE2/
+	4.1.5. ot tekushtiq do kraq 
+		/RE/,$
+	4.2. Komanda za iztrivane
+		d - /daemon/d
+	4.3. Komandi za vuvejdane
+	4.3.1. vuvejdane predi tekushtiqt red - i
+	4.3.2. vuvejdane sled tekushtiqt red
+	4.4. Promqna na stoinosti po reda
+		s/RE/RE	5. Za kakvo moje da se izpolzva awk
+
+	6. Osnovni deistvie s awk
+
+
