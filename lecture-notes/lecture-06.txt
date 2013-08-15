@@ -1,11 +1,22 @@
 
 Getting the basics
 1. Working with your network interfaces
-1.1. ifconfig
-1.2. iproute2
+1.1. ethtool / mii-tool
+1.2. ifconfig
+1.3. iproute2
 2. Routing
 2.1. route
 2.2. iproute2
+3. ipmask
+4. ipcalc
+5. Configuration files
+
+
+Working with Wireless:
+1. Basics
+1.1. iwconfig
+1.2. iwlist
+2. WPA/WPA2 authentication - wpa_supplicant
 
 
 List all network interfaces:
@@ -67,5 +78,74 @@ Looking up your ARP table with iproute2:
 
 What is the route that my machine will choose to ip xx.xxx.xx.xxx:
 	ip route get xx.xxx.xx.xxx
+
+Configuration files:
+RedHad based distros: /etc/sysconfig/network-scripts
+	ifcfg-eth0
+DEVICE=eth0
+IPADDR=10.2.0.254
+NETMASK=255.255.255.0
+NETWORK=10.2.0.0
+BROADCAST=10.2.255.255
+ONBOOT=yes
+
+Debian based distros: /etc/network/interfaces
+
+All distros:
+  /etc/nsswitch.conf	- Libc resolver configuration
+  /etc/resolv.conf		- Libc resolv server configuration
+  /etc/host.conf		- Additional Libc resolver configuration
+Local resolver files
+  /etc/hosts			- ip to name mappings
+  /etc/services			- port to service name mappings
+  /etc/networks			- ip network to name mappings
+  /etc/protocols		- Internet protocols as gathered from http://www.iana.org/assignments/protocol-numbers
+
+
+
+Configuring your Wireless on the terminal:
+
+ip link set wlan0 up / ifconfig wlan0 up
+iwlist wlan0 scan
+
+NO ENCRYPTION:
+iwconfig wlan0 essid Hackman channel 11 
+
+WEP crypto:
+iwconfig wlan0 essid Hackman channel 11 key YOUR_KEY / iwconfig wlan0 essid Hackman channel 11 key s:password
+
+WPA crypto:
+root@terion:~# wpa_passphrase Hackman
+# reading passphrase from stdin
+p1lotIzpitat3l
+
+network={
+        ssid="Hackman"
+        #psk="p1lotIzpitat3l"
+        psk=f7579acd88efa1b9b6a77535fa20e2e83a12953cffd71a582b65b882c27e10d1
+}
+
+# Copy the above output to your /etc/wpa_supplicant.conf
+
+root@terion:~# wpa_supplicant -D wext -i wlan0 -c /etc/wpa_supplicant.conf
+wlan0: Trying to associate with 7c:d1:c3:af:2b:39 (SSID='Hackman' freq=2412 MHz)
+ioctl[SIOCSIWFREQ]: Device or resource busy
+wlan0: Association request to the driver failed
+wlan0: Associated with 7c:d1:c3:af:2b:39
+wlan0: WPA: Key negotiation completed with 7c:d1:c3:af:2b:39 [PTK=CCMP GTK=TKIP]
+wlan0: CTRL-EVENT-CONNECTED - Connection to 7c:d1:c3:af:2b:39 completed (auth) [id=0 id_str=]
+
+-B for starting the supplicant into background
+
+Setup IP, dynamic or static :)
+
+
+
+Firewall concepts
+1. Stateless vs Statefull Firewall
+2. Different tables
+3. Different chains
+4. Listing your current firewall:
+	for i in filter nat mangle; do iptables -L -nvt $i; done
 
 
