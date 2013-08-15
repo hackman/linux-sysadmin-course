@@ -188,7 +188,7 @@ Bridging
 root@terion:~# brctl show
 bridge name     bridge id               STP enabled     interfaces
  - create bridge
-root@terion:~# brctl addbr lsa1 
+root@terion:~# brctl addbr lsa1
  - add devices to a bridge
 root@terion:~# brctl addif lsa1 eth0.4
 root@terion:~# brctl addif lsa1 eth0.5
@@ -202,6 +202,14 @@ lsa1            8000.f0def1810a2a       no              eth0.4
                                                         eth0.7
 
 Bonding
+ - Bonding modes
+	* balance-rr	-
+	* active-backup -
+	* balance-xor	- XOR ( source and destination mac % slave count )
+	* broadcast		- fault tolerance
+	* 802.3ad		- link aggregation
+	* balance-tlb	- transmit load balancing
+	* balance-alb	- active load balancing (transmit and receive)
  - ifenslave
  - /proc/net/bonding
 root@terion:fed:/proc/net/bonding# cat bond0 
