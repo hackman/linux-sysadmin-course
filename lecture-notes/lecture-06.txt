@@ -1,0 +1,71 @@
+
+Getting the basics
+1. Working with your network interfaces
+1.1. ifconfig
+1.2. iproute2
+2. Routing
+2.1. route
+2.2. iproute2
+
+
+List all network interfaces:
+	ifconfig -a
+
+List only network interfaces that are UP:
+	ifconfig
+
+List all network interfaces with iproute2:
+	ip address list
+	ip address show
+	ip address
+	ip a l
+	ip a s
+	ip a
+
+List all current routes:
+	route -n (the -n is for do not resolve IPs)
+
+Adding a routes with route:
+	route add -net 192.168.22.0/24 gw 10.2.0.1 dev eth0
+	route add -host 10.2.0.128  dev eth0
+
+Adding default gw with route:
+	route add default gw 10.2.0.1
+
+List all current routes with iproute2:
+	ip route list
+	ip route
+	ip r l
+	ip r
+
+Adding routes with iproute2:
+	ip route add 192.168.22.0/24 via 10.2.0.1 dev eth0
+	ip r a 192.168.22.0/24 via 10.2.0.1 dev eth0
+	ip route add 10.2.0.128 dev eth0
+	ip r a 10.2.0.128 dev eth0
+
+Adding default gw with iproute2:
+	ip route add 0/0 via 10.2.0.1
+	ip r a default via 10.2.0.1
+
+Configure network interface with ifconfig:
+	ifconfig eth0 10.2.0.254 netmask 255.255.255.0
+
+Configure network interface with iproute2:
+	ip address add 10.2.0.254/24 dev eth0
+	ip link set eth0 up
+	ip route add 10.2.0.0/24 dev eth0
+
+Looking up your ARP table with arp:
+	arp -n
+
+Looking up your ARP table with iproute2:
+	ip neigh list
+	ip neigh 
+	ip n l
+	ip n
+
+What is the route that my machine will choose to ip xx.xxx.xx.xxx:
+	ip route get xx.xxx.xx.xxx
+
+
