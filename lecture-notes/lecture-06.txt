@@ -104,6 +104,10 @@ BROADCAST=10.2.255.255
 ONBOOT=yes
 
 Debian based distros: /etc/network/interfaces
+auto lo
+iface lo inet loopback
+allow-hotplug eth0
+iface eth0 inet dhcp
 
 All distros:
   /etc/nsswitch.conf	- Libc resolver configuration
