@@ -1,0 +1,93 @@
++j-____a0@cnn-ch.cnn.info
+
+
+
+
+^\+?
+
+[a-z0-9]
+(
+([-+.] | [_]+)?
+[a-z0-9]+
+)*@
+(
+[a-z0-9]+
+   (\.|\-)ddsasdsas
+ )+
+ [a-z]{2,6}$
+
+255.255.255.0
+552.522.522.0
+999.
+
+^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$
+^([1-2]?[0-5]{1,2})
+
+
+printf("Line %d: %s %f\n", int1, string1, float1);
+printf("Line %000d: %s %f\n", int1, string1, float1);
+
+Line 
+Line 0001
+Line 0002
+OFS="::";
+
+print a,$1,$2,g,$3
+  a::$1::$2::
+awk -F ':' 
+  ARGV[0] -F
+      [1] :
+
+$5 ~ /sudo/ {
+	if ( $1 == "OK" ) { 
+		print OK; 
+	}
+	for () {
+
+	}
+}
+
+^[hm]ello
+ hello
+  s/ (ll)|(oo) / jj /
+	(ll|oo)
+	ll
+    oo
+    
+ mello 
+^.ello
+ ello 
+
+12,16 s / RE / RPLACE / g
+
+
+
+^.
+[a-dA-D4-9]
+hello bye\nbye bye\n
+[45789]
+
+s/ RE / replace /
+
+""g
+//
+
+hello
+s/ (ll) / jjj$1 /
+hejjjllo
+
+
+
+hhhhhhhhhhhhhrello
+^h*
+
+
+ (fhgl)|(hjme)
+
+ fhgl
+
+ [fhgl]
+ f
+ h
+ g
+ l
