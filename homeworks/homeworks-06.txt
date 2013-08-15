@@ -1,0 +1,2 @@
+1. Create a routing table called lsa. Then add all of your existing routes to it. And finally make your machine use that table instead of table 'main'.
+2. Configure static MAC to IP address mapping using iproute2.
