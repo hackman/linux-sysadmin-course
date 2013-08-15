@@ -10,7 +10,8 @@ Getting the basics
 2.3. becoming a router / enable forwarding
 3. ipmask
 4. ipcalc
-5. Configuration files
+5. Aliases
+6. Configuration files
 
 
 Working with Wireless:
@@ -69,6 +70,13 @@ Configure network interface with iproute2:
 	ip address add 10.2.0.254/24 dev eth0
 	ip link set eth0 up
 	ip route add 10.2.0.0/24 dev eth0
+
+Adding network interface aliases with ifconfig:
+	ifconfig eth0:x 10.2.0.19 netmask 255.255.255.0
+
+Adding network interface aliases with iproute2:
+	ip a a 10.2.0.19/24 dev eth0 label eth0:0
+	ip r a 10.2.0.0/24 dev eth0
 
 Looking up your ARP table with arp:
 	arp -n
@@ -159,12 +167,68 @@ Setup IP, dynamic or static :)
 
 VLANs
  - vconfig
+ - add vlan
+root@terion:/proc/net/vlan# vconfig add eth0 12
+Added VLAN with VID == 12 to IF -:eth0:-
+
+ - list vlans
+root@terion:/proc/net/vlan# cat config 
+VLAN Dev name    | VLAN ID
+Name-Type: VLAN_NAME_TYPE_RAW_PLUS_VID_NO_PAD
+eth0.12        | 12  | eth0
+
+ - remove vlan
+root@terion:/proc/net/vlan# vconfig rem eth0.12
+Removed VLAN -:eth0.12:-
+
 
 Bridging
  - brctl
+ - list bridges
+root@terion:~# brctl show
+bridge name     bridge id               STP enabled     interfaces
+ - create bridge
+root@terion:~# brctl addbr lsa1 
+ - add devices to a bridge
+root@terion:~# brctl addif lsa1 eth0.4
+root@terion:~# brctl addif lsa1 eth0.5
+root@terion:~# brctl addif lsa1 eth0.6
+root@terion:~# brctl addif lsa1 eth0.7
+root@terion:~# brctl show
+bridge name     bridge id               STP enabled     interfaces
+lsa1            8000.f0def1810a2a       no              eth0.4
+                                                        eth0.5
+                                                        eth0.6
+                                                        eth0.7
 
 Bonding
  - ifenslave
+ - /proc/net/bonding
+root@terion:fed:/proc/net/bonding# cat bond0 
+Ethernet Channel Bonding Driver: v3.7.1 (April 27, 2011)
+
+Bonding Mode: load balancing (round-robin)
+MII Status: up
+MII Polling Interval (ms): 0
+Up Delay (ms): 0
+Down Delay (ms): 0
+
+Slave Interface: eth0.6
+MII Status: up
+Speed: Unknown
+Duplex: Unknown
+Link Failure Count: 0
+Permanent HW addr: f0:de:f1:81:0a:2a
+Slave queue ID: 0
+
+Slave Interface: eth0.7
+MII Status: up
+Speed: Unknown
+Duplex: Unknown
+Link Failure Count: 0
+Permanent HW addr: f0:de:f1:81:0a:2a
+Slave queue ID: 0
+
 
 Firewall concepts
 1. Stateless vs Statefull Firewall
