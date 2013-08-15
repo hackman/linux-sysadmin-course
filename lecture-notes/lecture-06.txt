@@ -90,6 +90,9 @@ Looking up your ARP table with iproute2:
 What is the route that my machine will choose to ip xx.xxx.xx.xxx:
 	ip route get xx.xxx.xx.xxx
 
+Update the switch MAC table:
+	arping -U -I eth0 -c3 interface_ip
+
 Enable forwarding:
  echo 1 > /proc/sys/net/ipv4/ip_forward /  sysctl net.ipv4.ip_forward=1
 
