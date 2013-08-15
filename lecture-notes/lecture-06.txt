@@ -7,6 +7,7 @@ Getting the basics
 2. Routing
 2.1. route
 2.2. iproute2
+2.3. becoming a router / enable forwarding
 3. ipmask
 4. ipcalc
 5. Configuration files
@@ -62,6 +63,8 @@ Adding default gw with iproute2:
 Configure network interface with ifconfig:
 	ifconfig eth0 10.2.0.254 netmask 255.255.255.0
 
+Metrics - the lower the metric, the more preferable this route becomes
+
 Configure network interface with iproute2:
 	ip address add 10.2.0.254/24 dev eth0
 	ip link set eth0 up
@@ -78,6 +81,17 @@ Looking up your ARP table with iproute2:
 
 What is the route that my machine will choose to ip xx.xxx.xx.xxx:
 	ip route get xx.xxx.xx.xxx
+
+Enable forwarding:
+ echo 1 > /proc/sys/net/ipv4/ip_forward /  sysctl net.ipv4.ip_forward=1
+
+Routing tables
+ /etc/iproute2/rt_tables
+ ip rule list
+ ip rule
+ ip ru l
+ ip ru
+
 
 Configuration files:
 RedHad based distros: /etc/sysconfig/network-scripts
@@ -139,7 +153,14 @@ wlan0: CTRL-EVENT-CONNECTED - Connection to 7c:d1:c3:af:2b:39 completed (auth) [
 
 Setup IP, dynamic or static :)
 
+VLANs
+ - vconfig
 
+Bridging
+ - brctl
+
+Bonding
+ - ifenslave
 
 Firewall concepts
 1. Stateless vs Statefull Firewall
@@ -147,5 +168,6 @@ Firewall concepts
 3. Different chains
 4. Listing your current firewall:
 	for i in filter nat mangle; do iptables -L -nvt $i; done
+5. modules
 
 
