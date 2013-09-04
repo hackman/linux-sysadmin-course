@@ -1,0 +1,29 @@
+Software installation
+
+Installation from source
+- compiling
+  - linking to libraries (-l -I)
+  - source optimization (-O0 -O1 -O2)
+- patching
+- Source packages
+  - verification (md5sum, sha1sum)
+  - configure
+  - make
+  - make install
+- autoconf
+- automake
+
+Example project - binutils
+
+Package managers
+- RPM based
+- DEB based
+
+RPM based commands
+- rpm
+- yum
+
+DEB based commands
+- apt-get
+- apt-cache
+- dpkg
