@@ -1,0 +1,23 @@
+1. Make an RPM package for an application written in C. The expected result is the package and its spec file.
+2. Make an RPM package for an application written in Perl, Python or Ruby. The expected result is the package and its spec file.
+3. Make an Deb package for an application written in C. The exepected result is the package and its control files.
+4. Make an Deb package for an application written in Perl, Python or Ruby. The exepected result is the package and its control files.
+5. Describe the procedure for creating an RPM based repository.
+6. Describe the procedure for creating an Deb based repository.
+7. Create a Makefile for a C based application, which consists of config.h, menu.h, menu.c and README files. The Makefile should track the changes to config.h, menu.h and menu.c it should have definitions for compile, clean, install and uninstall. After compile the compile you should have a binary called nemo-menu. The install should put the binary in /usr/bin, create a directory /usr/share/doc/nemu-menu and put the README there.
+8. Describe what you have to do in order to start using autoconf for your project.
+9. Describe what you have to do in order to start using automake for your project.
+10. Create a C application which uses autoconf to configure config.h. Use autoconf to check if on the machine we have stdio.h, stdlib.h and string.h. The example C code may be(but is not required to be) this:
+
+#include 'config.h'
+int main() {
+    printf(MY_STRING);
+}
+
+#ifndef _MY_CONFIG_H
+#define _MY_CONFIG_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MY_STRING "It works\n"
+#endif
