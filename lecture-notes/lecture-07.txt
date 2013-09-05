@@ -19,6 +19,13 @@ Package managers
 - RPM based
 - DEB based
 
+Package structure
+- RPM
+   - cpio archive
+   - scripts
+- DEB
+   - contents
+   - debian
 RPM based commands
 - rpm
 - yum
