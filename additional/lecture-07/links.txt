@@ -1,0 +1,6 @@
+The GNU configure and build system - http://airs.com/ian/configure/
+GNU build system - http://en.wikipedia.org/wiki/GNU_build_system
+pkg-config - http://en.wikipedia.org/wiki/Pkg-config
+Maximum RPM - http://www.rpm.org/max-rpm/index.html
+TLDP: Debian Binary Package Building - http://tldp.org/HOWTO/Debian-Binary-Package-Building-HOWTO/x60.html
+
