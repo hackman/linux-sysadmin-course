@@ -1,0 +1,28 @@
+1. Understading the DNS infrastructure
+2. Installing Bind from Source
+3. Installing Bind from RPM/DEB
+4. Configuring Bind
+ - named.conf
+ - views
+ - zone file
+ - reverse zone file
+ - rndc.conf
+5. Administring bind - rndc
+ - reconfig
+ - reload
+ - retransfer
+6. Tools
+- host
+- dig
+- whois
+
+dig - help link http://www.madboa.com/geek/dig/
+
+1. Understanding the DHCP infrastructure
+2. Installing DHCP Daemon on RPM/DEB system
+3. Configuring DHCPD
+ - dhcpd.conf
+4. tfpd + pxe
+
+PXE configuration tutorial - http://www.syslinux.org/wiki/index.php/PXELINUX
+Where to get PXE from? - http://www.kano.org.uk/projects/pxe/
