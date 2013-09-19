@@ -3,7 +3,7 @@ Software installation
 Installation from source
 - compiling
   - linking to libraries (-l -I)
-  - source optimization (-O0 -O1 -O2)
+  - source optimization ( -O0 -O1 -O2 )
 - patching
 - Source packages
   - verification (md5sum, sha1sum)
