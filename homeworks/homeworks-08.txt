@@ -1,0 +1,2 @@
+1. Configure BIND to accept remote dynamic updates for zone maimunka.net. Show the named.conf and the zone file.
+2. Configure DHCPD to do remote dynamic dns updates.
