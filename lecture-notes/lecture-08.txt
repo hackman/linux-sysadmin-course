@@ -11,7 +11,8 @@
  - reconfig
  - reload
  - retransfer
-6. Tools
+6. Run Bind in Chroot.
+7. Tools
 - host
 - dig
 - whois
@@ -26,3 +27,15 @@ dig - help link http://www.madboa.com/geek/dig/
 
 PXE configuration tutorial - http://www.syslinux.org/wiki/index.php/PXELINUX
 Where to get PXE from? - http://www.kano.org.uk/projects/pxe/
+
+* dhcpcd
+* dhclient
+
+* dhcp client configuration on RedHat based distros
+  BOOTPROTO=dhcp
+  HWADDR=08:11:96:03:B2:28
+
+* dhcp client configuration on Dabian based distros
+  iface eth1 inet dhcp
+
+
