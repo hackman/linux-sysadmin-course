@@ -1,0 +1,52 @@
+ServerRoot
+User
+Group
+
+Timeout
+Listen
+
+LoadModule (apache1.3 and 2.x styles)
+
+ErrorLog
+LogLevel
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+LogFormat "%h %l %u %t \"%r\" %>s %b" common
+
+
+ServerAdmin
+ServerName 
+DocumentRoot
+ScriptAlias
+
+
+<Files> </Files>
+<FilesMatch> </FilesMatch>
+<Directory> </Directory>
+<DirectoryMatch> </DirectoryMatch>
+<Location> </Location>
+<IfModule> </IfModule>
+
+	Options - http://httpd.apache.org/docs/2.4/mod/core.html#options
+	AllowOverride & AllowOverrideList - http://httpd.apache.org/docs/2.4/mod/core.html#allowoverride
+
+	Order http://httpd.apache.org/docs/2.4/mod/mod_access_compat.html#order
+
+
+VirtualHosts
+	NameVritualHost ip:port (prior 2.3.11)
+	<VirtualHost hostname/ip:port> </VirtualHost>
+
+CGI execution
+  mod_php/mod_perl/mod_python/mod_ruby
+  pure CGI
+  FastCGI (fcgid)
+  SuEXEC CGI
+  itk/mod_ruid2 
+
+Client --> Apache -> Apache child
+							- mod_php -> index.php
+							- mod_cgi -> bash -> php-cgi index.php
+							- mod_fcgid -> FILE: index.php -> PHP daemon
+							- mod_cgi -> bash -> suexec -> php-cgi index.php
+							- mod_suphp -> bash -> suphp -> php-cgi index.php
+
