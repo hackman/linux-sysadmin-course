@@ -15,10 +15,10 @@ MAILTO=root,hackman@yuhu.biz
 
 12 6 * * 2 weekly-report-script.sh >> report.txt 2>/dev/null 
 
-n
-*/n
-x,y,z
-x-y
-*
+n		exact 
+*/n		every n
+x,y,z	only on x, y, z
+x-y		between x-y 
+*		all the time
 
 
