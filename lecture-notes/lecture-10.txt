@@ -1,0 +1,28 @@
+HTTP
+  URI
+  GET/POST/HEAD
+HTTPS
+
+URI
+  Protocols - file/http(s)/ftp(s)
+  proto : // user:pass@host:port / path/to/file/or/dir
+
+Apache 
+1. Directory structure
+2. Build from source
+3. Module infrastructure
+4. MPM modules
+ - prefork
+ - worker
+ - event
+ - itk / mod_ruid2
+5. Configuration
+
+Nginx
+1. Directory structure
+2. Build from source
+3. Module infrastructure
+4. Configuration
+
+
+
