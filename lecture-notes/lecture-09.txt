@@ -1,0 +1,23 @@
+
+1. crond/crontab
+2. at/atd
+ - at  - add/remove 
+ - atq - listing
+ - atrm - remove job
+ - /etc/at.allow/deny
+ - /var/spool/atjobs
+3. inetd/xinetd
+4. telnet/nc 
+5. sshd/ssh
+6. scp/rsync
+
+PAM 
+PAM + LDAP
+PAM + MySQL
+          user:pesho
+telnet -----------------> server
+
+ssh ---------------------> server
+
+ssh filter cmd
+
