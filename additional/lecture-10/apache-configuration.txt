@@ -41,7 +41,7 @@ CGI execution
   pure CGI
   FastCGI (fcgid)
   SuEXEC CGI
-  itk/mod_ruid2 
+  itk/mod_ruid2  ( http://mpm-itk.sesse.net/ https://github.com/mind04/mod-ruid2 )
 
 Client --> Apache -> Apache child
 							- mod_php -> index.php
@@ -49,4 +49,7 @@ Client --> Apache -> Apache child
 							- mod_fcgid -> FILE: index.php -> PHP daemon
 							- mod_cgi -> bash -> suexec -> php-cgi index.php
 							- mod_suphp -> bash -> suphp -> php-cgi index.php
+
+HTTPS hosts - SNI
+
 
