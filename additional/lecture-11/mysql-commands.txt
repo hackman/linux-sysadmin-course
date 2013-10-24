@@ -1,0 +1,51 @@
+== DB control ==
+ mysql> CREATE DATABASE dbname;
+
+List all databases:
+ mysql> SHOW DATABASES;
+
+List all tables and their databases with engine InnoDB:
+ mysql> SELECT TABLE_SCHEMA,TABLE_NAME FROM INFORMATION_SCHEMA.tables WHERE table_type='BASE TABLE' AND ENGINE='InnoDB';
+
+== User control ==
+ mysql> CREATE USER 'monty'@'localhost' IDENTIFIED BY 'some_pass';
+ mysql> GRANT ALL PRIVILEGES ON dbname.some_table TO 'monty'@'localhost';
+
+ mysql> GRANT ALL PRIVILEGES ON dbname.* TO user;
+
+ mysql> SHOW GRANTS FOR 'user'@'host';
+
+== Table control ==
+ mysql> SHOW TABLES;
+
+ mysql> SHOW CREATE TABLE table_name;
+
+ mysql> SHOW INDEX FROM table_name [ FROM db_name ];
+ mysql> SHOW INDEX FROM [db_name.]table_name;
+
+
+== Status ==
+Get the status of the mysql server
+ mysql> SHOW STATUS [LIKE ''];
+Get the INNODB engine status.
+ mysql> SHOW INNODB STATUS;
+Get the currently running 
+ mysql> SHOW PROCESSLIST;
+
+ mysql> SHOW FULL PROCESSLIST;
+
+ mysql> SHOW ENGINES;
+
+== Variables ==
+ mysql> SHOW VARIABLES [LIKE ''];
+If you need to change a variable of the server (for example: query_cache_size) you don't need to restart the server. You simply need to use command like this one:
+ mysql> SET GLOBAL variable_name = value;
+However not all variables can be changed without restart so test first.
+
+= Passwordless login =
+'''~/.my.cnf'''
+[mysql]
+user=root
+pass=mynewpass
+
+

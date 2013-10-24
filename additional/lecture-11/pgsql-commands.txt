@@ -1,0 +1,62 @@
+= Basic PostgreSQL commands =
+This gives you the list of databases(you are suppling template1 as a DB because you are sure that it exists on the local machine).
+ psql -l -Upostgres template1
+This is the way to import dumps:
+ psql -f filename.sql -U username database_name
+
+While in psql:
+ \i  - execute commands from file
+ \l  - list databases
+ \z  - list all table, view, and sequence access privileges
+ \d  - describe table, index, sequence, or view
+ \dt - list the tables in the current database
+ \di - list indexes in the current database
+ \ds - list sequences in the current database
+ \dv - list views in the current database
+ \du - list users
+
+If you want more information (like comments) you should add + to the command. 
+
+Example:
+ \dt+ table_name
+
+= Basic PostgreSQL statements =
+All SQL statements entered in psql are ended by semicolon(;).
+
+This statements apply only to PostgreSQL 7.4, in the newer versions this statements are altered
+ ALTER TABLE tablename OWNER TO username; - change the owner of table tablename to username
+ ALTER DATABASE data0 OWNER TO username;  - change the owner of databese data0 to username
+ ALTER SCHEMA public OWNER TO username;   - change the owner of scheme public to username
+ ALTER SCHEMA schema RENAME TO newname;   - change the name of scheme schema to newname
+ ALTER USER username PASSWORD 'string'    - change user's password to sting
+ GRANT CONNECT ON DATABASE 'xxx' TO 'yyy' - Grant connect privilages to user yyy to database xxxx
+ GRANT ALL ON 'table0' TO username;       - Grant all privilages of table table0 to user username
+ GRANT ALL ON SCHEMA public TO username;  - Grant all privilages of scheme public to user username
+ CREATE USER xxx PASSWORD 'string';       - creates user with username xxx with password string
+ CREATE DATABASE yyy OWNER xxx;           - create database yyy with owner xxx
+ SELECT usename,passwd FROM pg_shadow WHERE usename = '<username>';
+
+= Server Administration =
+== Show activity ==
+ SELECT procpid,datname,usename,client_addr,current_query,waiting FROM pg_stat_activity;
+== Show table I/O usage ==
+ SELECT relid,schemaname,relname,heap_blks_read,heap_blks_hit,idx_blks_read,idx_blks_hit 
+ FROM pg_statio_all_tables ORDER BY heap_blks_read DESC,heap_blks_hit DESC;
+== Kill query ==
+ select pg_cancel_backend( query_pid );
+
+== create lang ==
+ # createlang -Uuser plpgsql DB_NAME
+
+= Status =
+ select * from pg_stat_activity;
+
+= Passwordless login =
+
+* '''~/.pgpass'''
+ 127.0.0.1:5432:*:postgres:
+ 10.2.0.1:5432:*:tester:
+
+* '''syntax: '''
+ ip address:port:database:username:passowrd
+

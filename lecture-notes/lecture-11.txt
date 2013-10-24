@@ -1,0 +1,37 @@
+MySQL
+1. Architecture
+ - library
+ - client
+ - db server
+ -- query optimizer
+ -- query planner
+ -- storage engines
+ --- MyISAM
+ --- InnoDB
+ --- Archive
+ --- Federated
+ --- Memory
+ - file architecture
+  -- .frm - table definitions
+  -- .MYD - table data
+  -- .MYI - table indexes
+  -- .ibd - InnoDB table data
+2. Configuration
+ - my.cnf
+ - time zones
+3. Maintenance - mysql-commands.txt
+
+
+PgSQL
+1. Architecture
+ - library
+ - client
+ - db server
+ -- query optimizer
+ -- query planner
+ -- One Storage Engine to RULE them ALL
+ - DB architecture
+2. Configuration
+ - data/pg_hba.conf
+ - data/postgresql.conf
+3. Maintenance

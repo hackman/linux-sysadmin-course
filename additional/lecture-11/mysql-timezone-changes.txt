@@ -1,0 +1,18 @@
+= Change the Time Zone from the my.cnf =
+ default-time-zone='timezone'
+
+= Change the Time Zone from the CLI =
+ mysql> SET GLOBAL time_zone = 'America/New_York';
+
+Using the named timezone is important for timezone that has a daylights saving adjustment. However, for some linux builds you may get the following response:
+
+  #1298 - Unknown or incorrect time zone
+
+If you're seeing this, you may need to run a tzinfo_to_sql translation... it's easy to do, but not obvious. From the linux command line type in:
+
+ mysql_tzinfo_to_sql /usr/share/zoneinfo/|mysql mysql
+
+It will load any definitions in your zoneinfo into mysql. You can then go back and run your
+
+ mysql> SET GLOBAL time_zone = timezone;
+

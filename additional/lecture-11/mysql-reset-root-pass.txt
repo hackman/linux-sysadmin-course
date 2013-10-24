@@ -1,0 +1,26 @@
+== The problem ==
+You have to reset the mysql root user password, but you don't know the current root password.
+
+== Solution ==
+
+=== Variant 1 ===
+# stop mysql
+# create text file with the following contents:
+	SET PASSWORD FOR 'root'@'localhost' = PASSWORD('NewPassHere');
+# login as user mysql
+# start the server with this command:
+	mysqld_safe --init-file=~/your-text-file &
+# restart the server as normal
+
+=== Variant 2 ===
+# stop mysql
+# login as user mysql
+# start the server with this command:
+	/usr/sbin/mysqld --skip-grant-tables --user=root &
+# connect to the server:
+	mysql -u root
+# execute this query:
+	UPDATE mysql.user SET Password=PASSWORD('NewPassHere') WHERE User='root';
+	FLUSH PRIVILEGES;
+# restart the server as normal
+
