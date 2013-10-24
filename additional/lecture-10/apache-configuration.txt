@@ -1,36 +1,79 @@
-ServerRoot
-User
-Group
+ServerRoot "/usr"
+User nobody
+Group nobody
 
-Timeout
-Listen
+Listen IP1:80
+Listen IP1:81
+Listen IP2:80
+Listen IP1:443
+Listen IP2:443
 
+ClearModuleList
 LoadModule (apache1.3 and 2.x styles)
 
-ErrorLog
-LogLevel
+Timeout 5
+KeepAliveTimeout 30
+
+
+ErrorLog logs/error_log
+LogLevel 
 LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
 LogFormat "%h %l %u %t \"%r\" %>s %b" common
 
+CustomLog log/site1.log combined
 
-ServerAdmin
-ServerName 
-DocumentRoot
-ScriptAlias
+ServerAdmin pesho@mesho.com
+ServerName grizzly.yuhu.biz
 
+DocumentRoot /path
+ScriptAlias  /uri-path /storage-path
 
-<Files> </Files>
-<FilesMatch> </FilesMatch>
+grizzly.yuhu.biz/loc1/path1
+
+<Files /path/to/file> 
+
+</Files>
+<FilesMatch ~ RE> 
+</FilesMatch>
 <Directory> </Directory>
 <DirectoryMatch> </DirectoryMatch>
-<Location> </Location>
-<IfModule> </IfModule>
+<Location /loc1/path1> </Location>
+ mod_alias
+<IfModule alias_module> </IfModule>
 
 	Options - http://httpd.apache.org/docs/2.4/mod/core.html#options
 	AllowOverride & AllowOverrideList - http://httpd.apache.org/docs/2.4/mod/core.html#allowoverride
 
 	Order http://httpd.apache.org/docs/2.4/mod/mod_access_compat.html#order
 
+	Allow from hostname 10.0.0.0/24 10.2.0.1 *.domain.com
+	Deny from 192.168.0.0/24
+
+	Order allow,deny
+	Order deny,allow
+/.htaccess 
+/home/username/public_html/page.html
+						  /.htaccess 
+			  /.htaccess 
+<Directory />
+Deny from all
+</Directory>
+<Directory /home/*/public_html/>
+Allow from all
+</Directory>
+
+Global config
+VHosts
+Directory
+Files
+Location
+.htaccess 
+	http://www.abv.bg/loc1/loc2/loc3
+	<Location /error_page>
+	</Location>
+
+
+DirectoryIndex
 
 VirtualHosts
 	NameVritualHost ip:port (prior 2.3.11)
@@ -43,13 +86,28 @@ CGI execution
   SuEXEC CGI
   itk/mod_ruid2  ( http://mpm-itk.sesse.net/ https://github.com/mind04/mod-ruid2 )
 
+mod_suexec
+
 Client --> Apache -> Apache child
 							- mod_php -> index.php
 							- mod_cgi -> bash -> php-cgi index.php
-							- mod_fcgid -> FILE: index.php -> PHP daemon
-							- mod_cgi -> bash -> suexec -> php-cgi index.php
-							- mod_suphp -> bash -> suphp -> php-cgi index.php
+							- mod_cgi -> bash -> suexec UID GID -> php-cgi index.php
+							- mod_fastcgi -> FILE: index.php -> PHP daemon
+							- mod_fcgid -> bash -> php-cgi :socket -> index.php
+						- mod_fcgid -> bash -> suexec -> php-cgi :socket -> index.php
+						- mod_suphp -> bash -> suphp -> php-cgi index.php
 
-HTTPS hosts - SNI
+	nobody CGI 
+	nobody -> suexec -> USER1 CGI
+	nobody -\
+			|- php
+			|- php
+			|- php
 
 
+HTTPS hosts - SNI http://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI
+
+How to read Apache configuration
+
+mod_rewrite
+mod_security
