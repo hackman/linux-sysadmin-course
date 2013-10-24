@@ -16,6 +16,12 @@ MySQL
   -- .MYD - table data
   -- .MYI - table indexes
   -- .ibd - InnoDB table data
+ - mysql variations
+ -- Oracle's MySQL
+ -- Percona Server MySQL
+ -- MariaDB
+ -- OurDelta
+ -- Drizzle
 2. Configuration
  - my.cnf
  - time zones
