@@ -35,3 +35,4 @@ PgSQL
  - data/pg_hba.conf
  - data/postgresql.conf
 3. Maintenance
+ - creating databases (template0/1)
