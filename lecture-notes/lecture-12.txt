@@ -1,0 +1,47 @@
+https://www.kernel.org/
+
+make menuconfig
+make -j8
+make modules_install -> /lib/modules/x.xx.xx/
+depmod -a $(uname -r)
+
+mv arch/x86/boot/bzImage /boot/bzImage-x.xx.xx
+
+mkinitrd /boot/initrd-x.xx.xx.img x.xx.xx
+dracut /boot/initrd-x.xx.xx.img x.xx.xx
+
+
+1. cat /proc/cpuinfo
+1.1. processor count
+1.2. CPU type
+1.3. vme/vmx virtualization flags
+2. lspci
+3. free
+4. Filesystems (/etc/fstab)
+5. lsmod
+6. check for ncurses
+
+
+3.9.5-mm1-i
+.config -> kernel.config-3.9.5-mm0
+
+Modules
+ modprobe
+ insmod /full/path/to/module.so
+ lsmod
+ rmmod 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
