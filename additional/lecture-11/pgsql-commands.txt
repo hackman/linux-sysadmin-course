@@ -54,6 +54,7 @@ This statements apply only to PostgreSQL 7.4, in the newer versions this stateme
 = Passwordless login =
 
 * '''~/.pgpass'''
+ ::5432:*:postgres:okmijn
  127.0.0.1:5432:*:postgres:
  10.2.0.1:5432:*:tester:
 

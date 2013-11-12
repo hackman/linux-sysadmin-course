@@ -13,6 +13,8 @@ List all tables and their databases with engine InnoDB:
 
  mysql> GRANT ALL PRIVILEGES ON dbname.* TO user;
 
+ mysql> FLUSH PRIVILEGES;
+
  mysql> SHOW GRANTS FOR 'user'@'host';
 
 == Table control ==

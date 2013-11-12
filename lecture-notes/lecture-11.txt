@@ -1,12 +1,12 @@
 MySQL
 1. Architecture
- - library
- - client
- - db server
- -- query optimizer
+ - library 	libmysql
+ - client	mysql
+ - db server	mysqld (3306)
+ -- query optimizer 
  -- query planner
  -- storage engines
- --- MyISAM
+ --- MyISAM 
  --- InnoDB
  --- Archive
  --- Federated
@@ -23,9 +23,10 @@ MySQL
  -- OurDelta
  -- Drizzle
 2. Configuration
- - my.cnf
+ - /etc/my.cnf
  - time zones
 3. Maintenance - mysql-commands.txt
+4. DB initialization - mysql_install_db
 
 
 PgSQL
