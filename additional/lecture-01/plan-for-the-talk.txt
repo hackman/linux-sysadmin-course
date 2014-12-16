@@ -1,0 +1,39 @@
+1. How disks work
+1.1. Video with the disk
+1.2. Explain the video
+2. Types of HDD connectivity
+2.1. IDE a.k.a. ATA a.k.a. Parallel ATA(attachment)
+2.1.1. Primary
+2.1.2. Secondary
+2.2. SATA - Serial ATA(attachment)
+2.3. SCSI - Small Computer System Interface
+2.4. SAS - Serial attached SCSI
+3. What is partition
+3.1. Where do partitions live
+3.2. Master Boot Record
+4. What types of partitions
+4.1. Primary
+4.1.1. Maximum amount of partitions
+4.2. Extended
+4.2.1. Extended Boot Record
+4.2.2. Maximum amount of partitions
+4.3. GPT
+5. Why we need partitioning
+6. What partition schemes can we use
+6.1. Desktop
+6.2. Server
+6.2.1. boot, tmp & everything else
+6.2.2. boot, etc, tmp, usr, var & home on separate partitions
+6.2.3. boot, tmp, home & everything else
+7. What is RAID (Redundant Array of Independent/Inexpensive Disks)
+7.1. Types of RAID (software/hardware)
+7.2. RAID0
+7.3. RAID1
+7.4. RAID5
+7.5. RAID6
+7.6. Nestead RAID levels RAID0+1 & RAID1+0 (RAID10)
+8. What is LVM (Logical Volume Manager)
+8.1. Phisical Volumes
+8.2. Volume Grupes
+8.3. LV Partitions
+9. Additional functionalities of LVM
