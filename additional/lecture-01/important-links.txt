@@ -7,9 +7,10 @@
 * SCSI:				http://en.wikipedia.org/wiki/SCSI
 * SAS:				http://en.wikipedia.org/wiki/Serial_attached_SCSI
 
-* How the hard disks work:	http://www.youtube.com/watch?v=9eMWG3fwiEU
-* 72MB 4 platter disk:		http://www.youtube.com/watch?v=Y9Z8vF46fXo
-* Damaged disk:				http://www.youtube.com/watch?v=5HwBJl9wGSo
+* How the hard disks work:	https://www.youtube.com/watch?v=9eMWG3fwiEU
+* 72MB 4 platter disk:		https://www.youtube.com/watch?v=Y9Z8vF46fXo
+* Damaged disk:				https://www.youtube.com/watch?v=5HwBJl9wGSo
+* Sound vibration and disks: https://www.youtube.com/watch?v=tDacjrSCeq4
 
 Partitioning: http://en.wikipedia.org/wiki/Disk_partitioning
 
