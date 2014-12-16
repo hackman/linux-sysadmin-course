@@ -1,0 +1,97 @@
+= Important dates =
+    mid 60s - MIT, AT&T Bell Labs, General Electric - start work on OS
+        70s - Peter Neumann Unics
+ 3 Nov 1971 - first Unix
+       1982 - Unix System III v7
+
+27 Sep 1983 - Stallman announces GNU
+ 5 Jan 1984 - first developments
+
+   Sep 1991 - Linux 0.01
+13 Mar 1994 - Linux 1.0
+
+== History of Linux(the kernel) ==
+
+"This is a free minix-like kernel for i386(+) based AT-machines," began the Linux version 0.01 release notes in September of 1991 for the first release of the Linux kernel. "As the version number (0.01) suggests this is not a mature product. Currently only a subset of AT-hardware is supported (hard-disk, screen, keyboard and serial lines), and some of the system calls are not yet fully implemented (notably mount/umount aren't even implemented)." Booting the original 0.01 Linux kernel required bootstrapping it with minix, and the keyboard driver was written in assembly and hard-wired for a Finnish keyboard. The listed features were mostly presented as a comparison to minix and included, efficiently using the 386 chip rather than the older 8088, use of system calls rather than message passing, a fully multithreaded FS, minimal task switching, and visible interrupts. Linus Torvalds noted, "the guiding line when implementing linux was: get it working fast. I wanted the kernel simple, yet powerful enough to run most unix software." In a section titled "Apologies smile" he noted:
+
+"Това е свободно minix-подобно ядро за i386(+) базирани AT-машини," така започват бележките по първата версия на Linux (0.01) в началото на Септември 1991. "Както номера на версията (0.01) подсказва, това не е узрял продукт. В момента само част от AT-хардуера се поддържат(забележима е либсата на mount/umount)." За зареждането на оригиналното 0.01 Linux ядро се е изисквало зареждане със minix, и дайверът за клавиатурата е бил написан на асеблер, статично вързан към Финландска клавиатура. Включените елементи били главно пример за сравнение с minix и включвали ефективното използване на 386 чипът, вместо остарелият 8088, използването на системни извиквания(system calls) вместо подаването на съобщения(message passing), цялостна многонишкова(multythreaded) файлова система, минимален task switching и видими прекъсвания(interrupts). Линус Торвалдс отбелязал, "принципът при импелментирането на Linux беше: направи го да работи бързо. Аз исках просто ядро и едновременно с това, достатъчно мощно за да върви със него голяма част от unix софтуера." В секция озаглавена "Извинения smile" той отбелязва:
+
+"This isn't yet the 'mother of all operating systems', and anyone who hoped for that will have to wait for the
+first real release (1.0), and even then you might not want to change from minix. This is a source release for
+those that are interested in seeing what linux looks like, and it's not really supported yet."
+
+"Това все още не е 'майката на всички операционни системи', и всеки който се е надявал за това ще се наложи да
+изчака до първата истинка версия(1.0), и дори тогава вие едва ли бихте искали да преминете на нея от minix. Това
+в source-а за тези които ги интересува какво представлява Linux, и той все още не се поддържа."
+
+Linus had originally intended to call the new kernel "Freax". According to Wikipedia, the name Linux was actually invented by Ari Lemmke who maintained the ftp.funet.fi FTP server from which the kernel was originally distributed.
+
+The initial post that Linus made about Linux was to the comp.os.minix Usenet group titled, "What would you like to see most in minix". It began:
+
+
+
+Линус първоначално искал да кръсти новото ядро "Freax". Според Wikipedia, името Linux в действителност е измислено от Ари Леммке който поддържал по това време ftp.funet.fi, FTP сървърът от който ядрото се е дистрибутирало пъроначално.
+
+Пърото споменаване което Линус прави свързано с Linux е до Usenet групата comp.os.minix със заглавие, "Какво най-вече бихте искали да видите в minix". Писмото започва така:
+
+"I'm doing a (free) operating system (just a hobby, won't be big and professional like gnu) for 386(486) AT clones.
+This has been brewing since april, and is starting to get ready. I'd like any feedback on things people like/dislike
+in minix, as my OS resembles it somewhat (same physical layout of the file-system (due to practical reasons) among
+other things)."
+
+"Аз правя (свободна) операционна система за 386(486) АТ клонинги(само като хоби, няма да бъде голяма и
+професионална като gnu). Това се готви от април и зпочва да приема завършен вид. Бих искал коментари върху нещата
+които хората харесват/нехаресват в minix, тъй като моята операционна система прилича на нея (същият физически виф
+на файловата система (заради практически причини))."
+
+
+Indeed, Linux 1.0 was released on March 13th, 1994 supporting only the 32-bit i386 architecture. However, by the release of Linux 1.2 on March 7th, 1995 it had already been ported to 32-bit MIPS, 32-bit SPARC, and the 64-bit Alpha. By the release of Linux 2.0 on June 9th, 1996 support had also been added for the 32-bit m68k and 32-bit PowerPC architectures. And jumping forward to the Linux 2.6 kernel, first released in 2004, it has been and continues to be ported to numerous additional architectures.
+
+Linux 1.0 е пуснат на 13 Март 1994, поддържайки само 32-bit i386 архитектура. Въпреки това, само 1 година по-късно на 7 Март 1995, когато е пуснат Linux 1.2 той вече е портнат до 32-bit MIPS, 32-bit SPARC и дори за 64-bit Alpha. При пускането на Linux 2.0 на 9 Юни 1996, той вече поддържа и 32-bit m68k(Motorolla 68K) и 32-bin PowerPC архитектури. И прескачайки до Linux 2.6, за пръв път пуснат през 2004, той продължава да бъде портван до огромна бфойка допълнителни архитектури.
+
+== GNU - GNU's not Unix ==
+
+Първо, GNU е рекурсивен акронимsmile А какво са GNU проекта и GNU софтуер?
+
+=== GNU проекта ===
+GNU проекта е създаден от Ричард Столман в средата на 1983 (невероятно и аз тогава съм се родил smile). Идеята на проекта е била да се изгради свободна операционна система, но за разлика от Линус Торвалдс, Столман е искал да изгради не само ядрото но и всичкият приложен софтуер необходим за една операционна система. На 27 септември 1983 Столман обявява за пръв път инициативата си за създаването на тази операционна система. Първите разработки започват на 5 Януари 1984.
+
+За съжаление GNU проекта неуспява да развие свое собствено ядро до началото на 1990 (GNU Hurd). Пъровначалните планове за ядрото (GNU Hurd) били то да бъде базирано на ядрото на BSD 4.4, но заради либсата на сътрудничество от програмистите в Barkeley Столман решава да използват за основа Mach микроядро, което довежда до редица проблеми и изключителното забавяне в разработката на самото ядро. По същото време се появява и Linux, като става основен консуматор за разработените до момента компоненти за GNU операционната система.
+
+=== GNU софтуер ===
+
+От 1984 до 1990 са разработени огромна част основните потребителски програми нужни на една операционна система, които включват софтуер като:
+* GNU coreutils - ls, cat, cp, mv, rm
+* GNU binutils - as, ld, ldconfig
+* GNU build system - Automake, Autoconf, Libtool
+* GNU Compiler Collection(GCC) - compilers for C, C++, Fortran, Ada и Java
+* GNU Debugger -gdb
+* GNU C library - glibc
+* Bash - unix shell
+* Emacs - text editor
+и много други.
+
+Дефакто всеки софтуер разработен под GPL (General Public License) е бил "осиновяван" от GNU проекта и така много бързо се е натрупало голямо количество от приложен софтуер който е бил портван за различни операционни системи.
+
+В момента няма дистрибуция която да не използва приложен софтуер разработен от GNU проекта, един от най-забележимите примери е основната C библиотека която всички Linux дистрибуции използват(glibc).
+
+== Какво е дистрибуция ==
+Разделени, сами, ядрото и приложният софтуер немогат да съществуват. Събирането на ядрото със приложният софтуер формират една дистрибуция. По друг начин казано:
+
+Дистрибуция е съвкупността от ядрото и приложният софтуер.
+
+GNU/Linux дистрибуция е тази дистрибуция койято включва в себе си, голяма част от приложния софтуер разработен от GNU проекта. Дефакто в момента Linux ядрото дотолкова зависи от GNU софтуер-а, че е невъзможно дори да го компилираш без да използваш GNU софтуер.
+
+=== Известни GNU/Linux дистрибуции ===
+* RedHat GNU/Linux
+* Debian GNU/Linux
+* Slackware GNU/Linux
+
+== References ==
+
+* http://kerneltrap.org/node/14002
+* http://en.wikipedia.org/wiki/Linux
+* http://en.wikipedia.org/wiki/Linux_kernel_portability_and_supported_architectures
+* http://en.wikipedia.org/wiki/GNU
+* http://en.wikipedia.org/wiki/GNU_Project
+* http://groups.google.com/group/net.unix-wizards/browse_thread/thread/f2dc1f44f33bf6ed/4dadd63a976019d7?tvc=2#4dadd63a976019d7
