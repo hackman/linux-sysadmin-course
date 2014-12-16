@@ -1,24 +1,24 @@
 1. Linux History
-2. Filesystems
-2.1. Ext2, Ext3, Ext4
-2.2. ReiserFS, ReiserFS4
-2.3. Cluster/Network file systems
-2.3.1. NFS
-2.3.2. CIFS
-2.3.4. GlusterFS
-2.3.5. FHGFS
-2.3.6. OCFS2/GFS2 + DRBD
-2.4. Psuedo Filesystems
-2.4.1. Proc FS
-2.4.2. Sys FS
-2.4.3. Shm FS
-2.5. Swap
-2.6. FUSE
-2.7. Directory structure
-3. Partitioning
-3.1. LVM1 & LVM2
-3.2. RAID 1-10
-3.3. Partition schemes
+2. Partitioning
+2.1. LVM1 & LVM2
+2.2. RAID 1-10
+2.3. Partition schemes
+3. Filesystems
+3.1. Ext2, Ext3, Ext4
+3.2. ReiserFS, ReiserFS4
+3.3. Cluster/Network file systems
+3.3.1. NFS
+3.3.2. CIFS
+3.3.4. GlusterFS
+3.3.5. FHGFS
+3.3.6. OCFS2/GFS2 + DRBD
+3.4. Psuedo Filesystems
+3.4.1. Proc FS
+3.4.2. Sys FS
+3.4.3. Shm FS
+3.5. Swap
+3.6. FUSE
+3.7. Directory structure
 4. Linux Security Model
 4.1. File permitions
 4.2. Users & Groups
