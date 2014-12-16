@@ -1,0 +1,24 @@
+[root@wolf ~]# mdadm --examine --scan /dev/sdb1 /dev/sdb2 /dev/sdb3
+ARRAY /dev/md2 level=raid1 num-devices=2
+UUID=532502de:90e44fb0:242f485f:f02a2565
+devices=/dev/sdb3
+ARRAY /dev/md1 level=raid1 num-devices=2
+UUID=75fa22aa:9a11bcad:b42ed14a:b5f8da3c
+devices=/dev/sdb2
+ARRAY /dev/md0 level=raid1 num-devices=2
+UUID=b3cd99e7:d02be486:b0ea429a:e18ccf65
+devices=/dev/sdb1
+
+[root@beast ~]# cat /proc/mdstat
+Personalities : [raid1]
+md1 : active raid1 sdc3[1] sda3[0]
+58605056 blocks [2/2] [UU]
+
+md0 : active raid1 sde1[1] sdd1[0]
+976759936 blocks [2/2] [UU]
+
+unused devices:
+
+
+
+Софтуерният RAID се появява като /dev/mdX докато hardware RAID-овете се появяват като един един или повече sd диска(примерно sda и sdb когато имате конфигурирани 2 отделни RAID-а на един или повече хардуерни контролери).
