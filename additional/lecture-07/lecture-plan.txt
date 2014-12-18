@@ -1,0 +1,46 @@
+Explain RPM:
+  rpm -ivh
+  rpm -uvh
+  rpm -qa
+  rpm -ql
+  rpm -qi
+  rpm -e
+  rpm -V (и да се каже защо)
+
+We need to show the dependency management(rpm -qR).
+
+Mention the --nodeps and --noscripts options, and explain when and why are they used.
+
+In case the RPM database get corrupted we have the nice command: rpm --rebuilddb
+1. go to /var/lib/ and backup the rpm directory
+2. enter /var/lib/rpm and remove __db.00* 
+3. rpm --rebuilddb
+
+
+Explain DEB:
+
+  dpkg -i
+  dpkg -l
+  dpkg -L
+  dpkg -s или -p
+  dpkg -r
+  dpkg -p
+  Explain the difference between -r & -p
+  dpkg -V
+
+  dpkg --force-* & --no-force-*  options
+
+If there are issues with postinstall or preremove scripts:
+ /var/lib/dpkg/info/package.*
+
+Next we need to explain the repositories:
+
+  yum
+    /etc/yum.repos.d
+    /etc/yum.conf
+  apt-get/apt-cache
+    /etc/sources.list.d
+    /etc/sources.list
+
+https://wiki.debian.org/SourcesList
+
