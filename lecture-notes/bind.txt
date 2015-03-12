@@ -1,0 +1,28 @@
+BIND - DNS
+* Installation
+  - RedHat based: bind, bind-chroot, bind-utils(dig,host,nslookup,nsupdate), bind-sdb
+  - install also jwhois
+* server configuration
+* zone configuration
+* DLZ setup
+dlz "postgres zone" {
+   database "postgres 1
+   {host=127.0.0.1 port=5432 dbname=server user=named}
+# Check if the zone is found inside the SQL
+   {select zone from dns.records where zone = '%zone%' limit 1}
+# lookup()
+   {select ttl, type, mx_priority, case when lower(type)='txt' then '\"'
+         || data || '\"' when lower(type)='soa' then data || ' ' || resp_person || ' '
+         || serial || ' ' || refresh || ' ' || retry || ' ' || expire || ' ' || minimum
+         else data end from dns.records where zone = '%zone%' and host = '%record%'}
+# authority()
+   {}
+# allnodes()
+   {select ttl, type, host, mx_priority, case when lower(type)='txt' then '\"'
+         || data || '\"' else data end, resp_person, serial, refresh, retry, expire,
+        minimum from dns.records where zone = '%zone%'}
+# allowzonexfr()
+   {select zone from dns.transfers where zone = '%zone%' and client = '%client%'}";
+};
+http://bind-dlz.sourceforge.net/
+* DNS sec
