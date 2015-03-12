@@ -1,0 +1,23 @@
+* sshd - what is it?
+* sshd - installation
+  - apt-get install/yum install
+	RedHat based: openssh-server openssh-clients
+	Debian based: openssh-server openssh-client openssh-sftp-server
+* sshd - configuration
+  - Logging
+  - Crypto
+  - User
+  - Forwarding
+  - Per-user configuration
+  - Per-host configuration
+  - Chrooting :)
+* ssh - configuration
+  - authorized_keys
+  - per host configuration
+  - x application forwarding
+	xhost/xauth handling
+* ssh - key generation
+* ssh - cmdline parameters
+* scp - cmdline parameters
+* sftp 
+* rsync
