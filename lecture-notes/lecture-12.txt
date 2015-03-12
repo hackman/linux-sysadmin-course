@@ -3,6 +3,7 @@ https://www.kernel.org/
 make menuconfig
 make -j8
 make modules_install -> /lib/modules/x.xx.xx/
+make firmware_install -> /lib/firmware/
 depmod -a $(uname -r)
 
 mv arch/x86/boot/bzImage /boot/bzImage-x.xx.xx
@@ -22,6 +23,7 @@ dracut /boot/initrd-x.xx.xx.img x.xx.xx
 6. check for ncurses
 7. use ethtool -i to identify drivers for network devices
 8. fdisk -l to check for LVM or MD partitions
+9. lsusb
 
 
 3.9.5-mm1-i
@@ -29,21 +31,20 @@ dracut /boot/initrd-x.xx.xx.img x.xx.xx
 
 Modules
  modprobe
- insmod /full/path/to/module.so
+ insmod -f /full/path/to/module.so
  lsmod
- rmmod
+ rmmod -f
+ modinfo
 
 
+CPU:	Intel SMP SMT Multicore VIRT
+Memory: 8GB
 
-
-
-
-
-
-
-
-
-
-
-
-
+Storage: ahci - Intel SATA
+USB: ehci-pci - Intel
+Video: NVIDIA Corporation GF119M [Quadro NVS 4200M]
+Networking:
+	iwlwifi - Advanced-N 6205
+	e1000e - Intel Corporation 82579LM Gigabit
+Audio: snd_hda_intel - Intel HD
+Filesystems:
