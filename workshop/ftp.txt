@@ -1,0 +1,6 @@
+Setup ProFTPd with SQL
+- setup the ftp service
+- setup the SQL service(choose either MySQL or PgSQL)
+- configure 3 users
+- chroot each user into his own home folder
+

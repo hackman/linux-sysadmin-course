@@ -1,0 +1,8 @@
+Setup a Bind DNS server with:
+- two zones
+- dynamic updates for the created zones
+- allow updates only from 127.0.0.0 and your own IP
+
+Create a script to add,remove and update records in the dynamic zones.
+
+Add ntpd for clock syncronization.

@@ -1,0 +1,9 @@
+Setup Apache web server on port 81 and 82
+Add virtual host on the Apache web server for port 81
+Add virtual host on the Apache web server for port 82
+Add virtual host on the Apache web server for port 83
+
+Setup Nginx web server on port 80
+Configure nginx as a load balancer between ports 81, 82 & 83
+Make sure that the IPs logged in the logs of apache are NOT the IPs of the container it self.
+

@@ -1,0 +1,7 @@
+E-Mail server with SQL backend
+
+You have to setup an e-mail server with the following services:
+- Postfix (configured to use SQL)
+- Dovecot (configured to use SQL)
+- SQL (choose MySQL or PgSQL)
+- PostfixAdmin (for managing your accounts)

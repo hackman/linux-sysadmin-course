@@ -1,0 +1,27 @@
+SSH With chrooted users
+- create a basic chroot environment(it should have, bash, cp, mv, ps, sed, awk). You can use busybox if you like.
+- create the mounts needed for a few test users
+- configure SSH to chroot each user in its new directory
+- Directory structure
+/
+|-home/
+|     |-pesho
+|     |-mesho
+|     \-nesho
+|
+|-var/
+|    |-chroot/
+|    |       |-baseos/
+|    |       |       |-bin/
+|    |       |       |-lib/
+|    |       |       \-proc/
+|    |       |-pesho
+|    |       |-mesho
+|    |       \-nesho
+
+Additionally you can:
+- create a separate file, create an FS on it and use it to store the baseos
+- instead of using file, you can use tmpfs for your baseos
+- create an init script for the mounts
+	- if you decided to make any of the above two options, include their mounts in the script
+	- mount each user on boot

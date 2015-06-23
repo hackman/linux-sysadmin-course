@@ -1,0 +1,9 @@
+Setup Apache web server on port 81 and 82
+Add virtual host on the Apache web server for port 81
+Add virtual host on the Apache web server for port 82
+
+Setup Nginx web server on port 80
+Configure Nginx as a reverse proxy to Apache on port 81.
+Configure all urls that start with /second to be reverse proxy to Apache on port 82.
+Make sure that the IPs logged in the logs of apache are NOT the IPs of the container it self.
+

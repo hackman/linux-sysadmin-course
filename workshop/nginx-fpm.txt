@@ -1,0 +1,4 @@
+Configure Nginx
+Configure PHP as FPM
+Start multiple FPM instances (at least two)
+Configure Nginx to use all started FPM instances in balancer setup

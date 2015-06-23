@@ -1,0 +1,5 @@
+Create an Exim antispam SMTP:
+- Exim
+- SpamAssassin for spam protection
+- ClamAV for virus protection
+- vMail.Admin for managing spamassassin

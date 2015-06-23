@@ -1,0 +1,6 @@
+Create a postfix antispam SMTP:
+- Postfix
+- SpamAssassin for spam protection
+- ClamAV for virus protection
+- SQL (MySQL or PgSQL)
+- vMail.Admin for managing spamassassin

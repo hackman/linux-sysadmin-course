@@ -1,0 +1,3 @@
+Setup Apache web server with PHP (no matter how you set it up).
+Setup MySQL server.
+Install Wordpress.

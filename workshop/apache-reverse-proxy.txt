@@ -1,0 +1,5 @@
+Setup Apache web server.
+Add one additional IP to your container.
+Add virtual host on that additional IP.
+Add a virtual host on the main IP.
+Configure the main IP vhost to be a reverse proxy for the secondary IP. Make sure that the IPs logged in the logs for the secondary vhost are NOT the IPs of the container it self.
