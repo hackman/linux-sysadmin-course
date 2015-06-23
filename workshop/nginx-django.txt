@@ -1,0 +1,2 @@
+Install and configure Nginx
+Install and configure Django
