@@ -2,7 +2,7 @@ The Three Giants of Linux - http://www.linux-mag.com/id/7721/
 The Linux Distribution Diagram - http://futurist.se/gldt/
 List of supported architectures - http://en.wikipedia.org/wiki/Linux_kernel_portability_and_supported_architectures
 History of Linux - http://en.wikipedia.org/wiki/History_of_Linux
-Linux kernel internals structure - http://www.makelinux.net/system/new
+Linux kernel internals structure - additional/GNU_Linux_OS_internals.png
 
 
 How to find help in Linux
