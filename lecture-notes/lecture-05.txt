@@ -3,7 +3,7 @@
 1.2. pico/nano
 1.3. joe
 1.4. mcedit
-2. Usefull command line tools
+2. Useful command line tools
 2.1. more
 2.2. less
 2.3. mc
