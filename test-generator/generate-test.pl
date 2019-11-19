@@ -5,6 +5,8 @@ use POSIX qw(strftime);
 use DBD::Pg;
 use PDF::Reuse;
 use utf8;
+no warnings 'utf8';
+use Data::Dumper;
 
 #
 # ./generate-tests.pl [variant]
@@ -16,23 +18,25 @@ sub logger {
 	print 'Error: ' . $_[0] ."\n" if defined($_[0]);
 }
 
+# define which test we are going to generate, first or second
+my $first_test = 1;
 my $debug = 0;
 my $pguser = 'smalusr';
 my $pgpass = 'kokoshka';
 my $pgdb = 'DBI:Pg:database=smal;host=localhost;port=5432';
 my $pgconn = DBI->connect_cached( $pgdb, $pguser, $pgpass, { PrintError => 1, AutoCommit => 1 }) or die("$DBI::errstr\n");
 my $schema = 'public';
-# define which test we are going to generate, first or second
-my $first_test = 0;
 my %ques = ();
 my $qcount = 0;
 my $question_count = 1;
 my $max_questions = 50;
 my $variant = 1;
 $variant = $ARGV[0] if (defined($ARGV[0]) && $ARGV[0] =~ /^[0-9]+$/);
-my $filename = "test1-variant$variant";
+my $filename = $first_test ? "test1-variant$variant" : "test2-variant$variant";
 my $first_qid;
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
+# define which test we are going to generate, first or second
+my $first_test = 1;
 
 $year = $year+1900;
 
@@ -57,9 +61,16 @@ if ($first_test) {
 }
 my $fqid = $first_qid->execute();
 print "First quid: $fqid\n" if $debug;
-
-#my $get_question   = $pgconn->prepare(sprintf('SELECT question FROM "%s".questions WHERE id = ? OFFSET random()*%d LIMIT 1', $schema, $qcount))
-my $get_question   = $pgconn->prepare(sprintf('SELECT question FROM "%s".questions WHERE id = ? LIMIT 1', $schema))
+my %all_questions = ();
+my $max_q = 0;
+my $q_ids = $pgconn->prepare(sprintf('SELECT id,first_test FROM "%s".questions ORDER BY id', $schema))
+	or logger($DBI::errstr);
+$q_ids->execute();
+foreach my $q_id(@{$q_ids->fetchall_arrayref}) {
+	$all_questions{$$q_id[0]} = $$q_id[1];
+	$max_q = $$q_id[0];
+}
+my $get_question   = $pgconn->prepare(sprintf('SELECT question FROM "%s".questions WHERE id = ? AND %s first_test LIMIT 1', $schema, $first_test ? '' : 'NOT' ))
 	or logger($DBI::errstr);
 my $right_asnwares = $pgconn->prepare(sprintf('SELECT answer FROM "%s".right_answers WHERE q_id = ?', $schema))
 	or logger($DBI::errstr);
@@ -80,17 +91,27 @@ $id_compensation = $fqid-1 if !$first_test;
 my $id = $id_compensation + int(rand($qcount));
 # generate random question positions
 while ($question_count <= $max_questions) {
-	print "Num: $question_count" if $debug;
+	printf "Num: %2d", $question_count if $debug;
 	my $rcount = 0;
-	until (! exists $questions_check{$id} && ! exists $excluded{$id}) {
-		$id = $id_compensation + int(rand($qcount));
-		if ($rcount == 350) {
-			print "Too random\n" if $debug;
+	while (1) {
+		$id = $id_compensation + int(rand($max_q));
+		next if (exists $questions_check{$id});
+		if ($first_test and $all_questions{$id}) {
+			$questions_check{$id} = 1;
 			last;
+		}
+		if (!$first_test and !$all_questions{$id}) {
+			$questions_check{$id} = 1;
+			last;
+		}
+		if ($rcount > 350) {
+			# We can't find a random question id, that is also  part of the QIDs from the DB.
+			print " - Too random - " if $debug;
+			next;
 		}
 		$rcount++;
 	}
-	print " q_id: $id\n" if $debug;
+	printf " q_id: %3d %d\n", $id, $all_questions{$id} if $debug;
 	$questions_check{$id} = 1;
 	$ques{$question_count} = [ -1, -1, -1, -1, -1, -1 ];
 	$ques{$question_count}[6] = $id;
@@ -99,25 +120,30 @@ while ($question_count <= $max_questions) {
 	$ques{$question_count}[0] = $location;
 	$question_count++;
 }
-for (sort keys(%ques)) {print "$_ not defined\n" if (!defined($ques{$_}[0]));}
+
+# Check if there are questions without correct answer location
+if ($debug) {
+	for (sort keys(%ques)) {print "$_ not defined\n" if (!defined($ques{$_}[0]));}
+}
 
 my $page_count = 1;
 # Starting position on the page(after the answer boxes)
-my $last_line = 666;
+my $last_line = 700;
 
 sub page_check {
 	my $last_pos = $_[0];
 	my $page_count = $_[1];
- 	print 'Page: '.${$page_count}.' Line: '.${$last_pos}."\n" if $debug;
+# 	print 'Page: '.${$page_count}.' Line: '.${$last_pos}."\n" if $debug;
 	${$last_pos} -= 16;
 	if (${$last_pos} < 40) {
 		if (${$page_count} == 1) {
 			prAdd("0.0 0.0 0.0 RG\n");
 			prAdd("9.0 9.0 9.0 rg\n");
+			# Generate the answer boxes
 			for my $l (1..25) {
 				my $pos = ($l * 18) + 20;
-				prAdd("$pos 711 18 20 re\n");
-				prAdd("$pos 676 18 20 re\n");
+				prAdd("$pos 744 18 20 re\n");
+				prAdd("$pos 712 18 20 re\n");
 			}
 			prAdd("B\n");
 		}
@@ -132,18 +158,18 @@ sub page_check {
 prFile("$filename.pdf");
 prTTFont('/usr/share/fonts/arial.ttf');
 prText(35,800,"Linux System & Network Administration");
-prText(340,800,"TEST $test   $year");
+prText(340,800,"TEST $test   $year   variant: $variant");
 prText(532,800,"Page $page_count");
-prText(35,780,"Name: ______________________________________________________________________");
-prText(35,760,"SoftUni username: ______________________________");
-prText(510,760,"  Variant: $variant");
+prText(35,780,"Name: _______________________________________________________  FN:_______________");
+
+# Generate the answer numbers
 for my $l (1..25) {
 	my $pos = ($l * 18) + 24;
 	if ($l > 9) {
 		$pos = ($l * 18) + 22;
 	}
-	prText($pos,734,$l);
-	prText($pos-1,699,$l+25);
+	prText($pos,766,$l);
+	prText($pos-1,734,$l+25);
 }
 
 prFontSize('10');
@@ -218,25 +244,24 @@ for (1..$max_questions) {
 	if ($q_len > 92) {
 		my @lines = split /\n/, $ques{$qid}[5];
 		for (my $l=0;$l<=$#lines;$l++) {
-			$lines[$l] =~ s/\n/ /g;
 			if ($l==0) {
-				prText(35,$last_line,sprintf('%d. %s', $qid, $lines[$l]));
+				prText(35,$last_line,sprintf('%d. %ls', $qid, $lines[$l]));
 			} else {
 				prText(35,$last_line,$lines[$l]) if ($lines[$l] !~ /^[\s|\n]*$/);
 			}
 			page_check(\$last_line,\$page_count);
 		}
 	} else {
-		prText(35,$last_line,sprintf('%d. %s', $qid, $ques{$qid}[5]));
+		prText(35,$last_line,sprintf('%d. %ls', $qid, $ques{$qid}[5]));
 	}
 
 	my %a_names = ( 1 => 'a', 2 => 'b', 3 => 'c', 4 => 'd' );
 	$entry_count = 1;
 	for (my $c=1;$c<5;$c++) {
 		if (defined($ques{$qid}[$c]) && $ques{$qid}[$c] ne '-1') {
- 			printf("  %s) %s\n", $a_names{$entry_count}, $ques{$qid}[$c]) if $debug;
+			printf("  %ls) %ls\n", $a_names{$entry_count}, $ques{$qid}[$c]) if $debug;
 			page_check(\$last_line,\$page_count);
-			prText(35,$last_line,sprintf("  %s) %s", $a_names{$entry_count}, $ques{$qid}[$c]));
+			prText(35,$last_line,sprintf("  %ls) %ls", $a_names{$entry_count}, $ques{$qid}[$c]));
 			$entry_count++;
 		}
 	}
@@ -256,15 +281,13 @@ for my $l (1..25) {
 # print the right answares :)
 $tcount = 1;
 print "\nNum: \n" if $debug;
-# prAdd("0.0 0.0 0.0 RG\n");
-#for (sort keys(%ques)) {
 for (1..$max_questions) {
 	print "$_ not defined\n" if (!defined($ques{$_}[0]) && $debug);
 	my $right = 'a';
 	$right = 'b' if ($ques{$_}[0] == 2);
 	$right = 'c' if ($ques{$_}[0] == 3);
 	$right = 'd' if ($ques{$_}[0] == 4);
-	printf("%2d: %s \n",$tcount, $right) if $debug;
+	printf("%2d: %ls \n",$tcount, $right) if $debug;
 	prAdd("q 38 717 m 490 717 l S Q");
 	prAdd("q 38 698 m 490 698 l S Q");
 	prAdd("q 38 677 m 490 677 l S Q");
