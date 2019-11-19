@@ -218,6 +218,24 @@ lsa1            8000.f0def1810a2a       no              eth0.4
                                                         eth0.5
                                                         eth0.6
                                                         eth0.7
+ - remove devices from a bridge
+root@terion:~# brctl delif lsa1 eth0.4
+
+ - create bridge using iproute2
+root@terion:~# ip link add lsa1 type bridge stp_state 0
+root@terion:~# ip link set dev lsa1 up
+root@terion:~# ip link set dev eth0.4 master br1
+root@terion:~# ip link set dev eth0.5 master br1
+
+ - remove interface from the bridge:
+root@terion:~# ip link set dev eth0 nomaster
+
+ - Show the state of the ports in the bridge
+root@terion:~# bridge link show lsa1
+ - Show and manipulate the mac address table of the bridge (Forwarding DataBase)
+root@terion:~# bridge fdb show lsa1
+root@terion:~# bridge fdb add/append/del/replace
+
 
 Bonding
  - Bonding modes
