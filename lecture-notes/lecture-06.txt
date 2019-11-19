@@ -175,15 +175,29 @@ VLANs
 root@terion:/proc/net/vlan# vconfig add eth0 12
 Added VLAN with VID == 12 to IF -:eth0:-
 
+root@terion:~# ip link add link eth0 name eth0.12 type vlan id 12
+
  - list vlans
 root@terion:/proc/net/vlan# cat config 
 VLAN Dev name    | VLAN ID
 Name-Type: VLAN_NAME_TYPE_RAW_PLUS_VID_NO_PAD
 eth0.12        | 12  | eth0
 
+iproute2:
+  root@terion:~# ip link list
+Short commands:
+  root@terion:~# ip l
+
  - remove vlan
 root@terion:/proc/net/vlan# vconfig rem eth0.12
 Removed VLAN -:eth0.12:-
+
+iproute2:
+  root@terion:~# ip link set down eth0.12
+  root@terion:~# ip link delete eth0.12
+Short commands:
+  root@terion:~# ip l set down eth0.12
+  root@terion:~# ip l d eth0.12
 
 
 Bridging
