@@ -1,0 +1,15 @@
+1. Create a routing table called lsa. Then add all of your existing routes to it. And finally make your machine use that table instead of table 'main'.
+ 2. Write a RedHat based configuration file(s) that will add the following two networks as static routes on eth1:
+	10.18.1.0/24
+	192.168.0.0/23
+ 3. Write a RedHat based configuration file(s) that will create a bridge device from eth0 and eth1.
+ 4. Write a RedHat based configuration file(s) that will create a bonding device from tun0 and tun1.
+ 5. Write a RedHat based configuration file(s) that will place VLAN 1 and VLAN 5 on eth0, and VLAN 4 on eth1.
+ 6. Write a Debian based configuration file(s) that will add the following two networks as static routes on eth1:
+	10.18.1.0/24
+	192.168.0.0/23
+ 7. Write a Debian based configuration file that will create a bridge device from eth0 and eth1.
+ 8. Write a Debian based configuration file(s) that will create a bonding device from tun0 and tun1.
+ 9. Write a Debian based configuration file(s) that will place VLAN 1 and VLAN 5 on eth0, and VLAN 4 on eth1.
+10. Configure static MAC to IP address mapping using iproute2.
+11. Describe the difference between dhclient and dhcpcd.

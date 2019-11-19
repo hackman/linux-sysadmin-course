@@ -1,0 +1,20 @@
+ 1. Find hardware devices which can export regular RAM as HDD. Please provide details, how these devices work and how they can be accessed from Linux.
+ 2. Find a hardware device that can store more than 6 HDDs and can be directly attached to controller on a machine.
+ 3. Write down the commands needed to create, mount and unmount an encrypted partition. Why have you selected the technology you have used?
+ 4. Write down the commands needed to create, mount and unmount an encrypted directory. Why have you selected the technology you have used?
+ 5. Write down the commands needed to create, mount and unmount an encrypted file system within a file. Why have you selected the technology you have used?
+ 6. Write down the commands needed to create SW RAID10 with 4 SATA drives. How will you add one more drive as hot-spare?
+ 7. Write down the commands needed to create SW RAID01 with 4 SATA drives. How will you stop one of the drives in the array and prepare it for replacement?
+ 8. Write down the commands needed to create SW RAID60 with 10 SATA drives. How will you start the array on the next reboot?
+ 9. Write down the commands needed to create SW RAID6 with 5 SATA drives. Also where can we find information about the status of the array and what does it mean?
+10. Find a tool that can be used to monitor and configure LSI RAID controller. Give one example command for monitoring and one for configuration.
+11. Find a tool that can be used to monitor and configure 3were RAID controller. Give one example command for monitoring and one for configuration.
+12. Find a tool that can be used to monitor and configure Adaptec RAID controller. Give one example command for monitoring and one for configuration.
+13. Find a tool that can be used to monitor and configure DELL(PERC) RAID controller. Give one example command for monitoring and one for configuration.
+14. Write down the commands needed to create an LVM snapshot of a drive. Also explain the disk usage requirements for the the snapshot.
+15. Describe the difference between the hash functions (tea, yura or r5) used in ReiserFS.
+16. Write a protofile for use with mkfs.xfs to create a file system on 20 GB partition.
+17. Find all possible command line tools related to XFS administration (at least 5).
+18. Describe the procedure of marking badblocks in Ext2/3/4 FS(including the tools that are needed).
+19. Describe the procedure of resizing ReiserFS.
+20. Describe the procedure of replacing a HDD containing partition part of a volume group(LVM).

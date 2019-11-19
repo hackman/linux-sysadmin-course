@@ -1,0 +1,11 @@
+ 1. Find the major and minor numbers for the "watchdog" devices.
+ 2. Write down configuration for GRUB which pass protects changes to the added kernels.
+ 3. What is the command and its parameters to mount a windows fs in such a way that all files and dirs in it will be owned by user "naso" and group "students".
+ 4. Write down at least 3 Linux file systems optimized especially for Flash drives(SD cards, USB Drives, SSD disks).
+ 5. Describe what is stored in /var/run & /var/lock and how the two dirs are actually used on most Linux distros.
+ 6. Create a target file for Apache web server for Systemd.
+ 7. Configure agetty for serial console ttyS0 with Systemd.
+ 8. Create a job definition file for Apache web server for UpStart.
+ 9. Create a job definition file for serial console with UpStart.
+10. Configure GRUB to load a kernel and its initrd from the Network.
+11. Find the major and minor number of /dev/mptctl and describe what this device is for.
