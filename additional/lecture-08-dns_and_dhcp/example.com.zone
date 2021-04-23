@@ -1,0 +1,14 @@
+$TTL	86400
+@			1D IN SOA	@ owner.example.com. (
+					42		; serial (d. adams)
+					3H		; refresh
+					15M		; retry
+					1W		; expiry
+					1D )		; minimum
+
+			1D IN NS	@
+			1D IN MX	10 mail
+			1D IN MX	20 smtp.gmail.com.
+			1D IN A		127.0.0.1
+www			14400	IN CNAME	@
+mail		3600	IN A		1.1.22.1
