@@ -19,5 +19,36 @@ telnet -----------------> server
 
 ssh ---------------------> server
 
-ssh filter cmd
+* sshd - what is it?
+* sshd - installation
+  - apt-get install/yum install
+	RedHat based: openssh-server openssh-clients
+	Debian based: openssh-server openssh-client openssh-sftp-server
+* sshd - configuration
+  - Logging
+  - Crypto
+  - User
+  - Forwarding
+  - Per-user configuration
+  - Per-host configuration
+  - Chrooting :)
+* ssh - configuration
+  - authorized_keys
+  - per host configuration
+  - x application forwarding
+	xhost/xauth handling
+* ssh - key generation
+* ssh - cmdline parameters
+* command execution using the ssh client:
+  - simple execution
+   ssh SERVER "command"
+   ssh SERVER < local_script.sh
+   cat local_script.sh | ssh SERVER
+  - piping data
+   cat big_local_file | ssh SERVER 'gzip - > remote_archive.gz'
+   gzip -c big_local_file | ssh SERVER 'cat > remote_archive.gz'
+   ssh SERVER 'cat big_remote.gz'|gzip -d - > extracted_file
+* scp - cmdline parameters
+* sftp
+* rsync
 
